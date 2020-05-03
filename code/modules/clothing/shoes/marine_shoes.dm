@@ -24,6 +24,40 @@
     . = ..()
     pockets = new /obj/item/storage/internal/boot_knife(src)
 
+/obj/item/clothing/shoes/marine/attack_hand(mob/living/user)
+    if(!pockets)
+        return ..()
+    if(pockets.handle_attack_hand(user))
+        return ..()
+
+
+/obj/item/clothing/shoes/marine/MouseDrop(over_object, src_location, over_location)
+    if(!pockets)
+        return ..()
+    if(pockets.handle_mousedrop(usr, over_object))
+        return ..()
+
+
+/obj/item/clothing/shoes/marine/attackby(obj/item/I, mob/user, params)
+    . = ..()
+    if(.)
+        return
+    if(!pockets)
+        return
+
+    return pockets.attackby(I, user, params)
+
+
+/obj/item/clothing/shoes/marine/emp_act(severity)
+    pockets?.emp_act(severity)
+    return ..()
+
+/obj/item/clothing/shoes/marine/update_icon()
+    if(length(pockets.contents))
+        icon_state = "[initial(icon_state)]-knife"
+    else
+        icon_state = initial(icon_state)
+
 
 /obj/item/clothing/shoes/marine/pyro
 	name = "flame-resistant combat boots"
