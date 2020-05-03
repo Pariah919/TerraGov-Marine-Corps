@@ -305,14 +305,6 @@
 		B.remove_from_storage(W)
 		put_in_hands(W)
 		return TRUE
-	else if(istype(I, /obj/item/clothing/shoes/marine))
-		var/obj/item/clothing/shoes/marine/S = I
-		if(!S.knife)
-			return FALSE
-		put_in_hands(S.knife)
-		S.knife = null
-		S.update_icon()
-		return TRUE
 	else if(istype(I, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = I
 		if(!U.hastie)
@@ -457,7 +449,7 @@
 		if(buckle.anchored)
 			return
 		return start_pulling(buckle)
-	
+
 	AM.set_glide_size(glide_size)
 
 	pulling = AM
@@ -485,7 +477,7 @@
 
 		if(pulled_mob.mob_size > MOB_SIZE_HUMAN || !(pulled_mob.status_flags & CANPUSH))
 			grab_item.icon_state = "!reinforce"
-		
+
 		set_pull_offsets(pulled_mob)
 
 	update_pull_movespeed()

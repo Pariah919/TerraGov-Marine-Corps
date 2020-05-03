@@ -236,7 +236,8 @@
 
 	ghostize(FALSE) //We want to make sure they are not kicked to lobby.
 
-	//Make an announcement and log the person entering storage.
+	//Make an announcement and log the person entering
+	.
 	var/data = num2text(length(GLOB.cryoed_mob_list))
 	GLOB.cryoed_mob_list += data
 	GLOB.cryoed_mob_list[data] = list(real_name, job ? job.title : "Unassigned", gameTimestamp())
@@ -308,11 +309,6 @@
 	return ..()
 
 /obj/item/clothing/shoes/marine/store_in_cryo(list/items, nullspace_it = TRUE)
-	if(knife)
-		items = knife.store_in_cryo(items)
-		knife = null
-		update_icon()
-	return ..()
 
 /obj/item/clothing/tie/storage/store_in_cryo(list/items, nullspace_it = TRUE)
 	for(var/O in hold)
