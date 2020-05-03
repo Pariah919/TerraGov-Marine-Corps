@@ -99,10 +99,7 @@
 
 
 	attackby(obj/item/I as obj, mob/user as mob)
-		if(istype(I,/obj/item/stack/cable_coil))
-			var/obj/item/stack/cable_coil/CC = I
-			if (CC.use(5))
-				to_chat(user, "You wrap some cable around the bayonet. It can now be attached to a gun.")
+				to_chat(user, "You put the knife  into a bayonet position.")
 				if(loc == user)
 					user.temporarilyRemoveItemFromInventory(src)
 				var/obj/item/attachable/bayonet/F = new(src.loc)
