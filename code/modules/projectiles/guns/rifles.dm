@@ -58,6 +58,7 @@
 						/obj/item/attachable/angledgrip,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/gyro,
+						/obj/item/attachable/bayonetknife,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/stock/t18stock,

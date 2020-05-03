@@ -345,7 +345,8 @@ Defined in conflicts.dm of the #defines folder.
 	name = "T-22 bayonet"
 	desc = "A sharp knife that can be attached to a weapon at will. Seems nice in a fight."
 	icon_state = "bayonetknife"
-	attach_icon = "bayonet_a"
+	item_state = "combat_knife"
+	attach_icon = "bayonetknife_a"
 	force = 25
 	throwforce = 10
 	attach_delay = 10 //Bayonets attach/detach quickly.
