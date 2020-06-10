@@ -709,7 +709,11 @@
 					/obj/item/armor_module/armor/arms/light = 20,
 					/obj/item/armor_module/armor/legs/heavy = 20,
 					/obj/item/armor_module/armor/legs/medium = 20,
-					/obj/item/armor_module/armor/legs/light = 20
+					/obj/item/armor_module/armor/legs/light = 20,
+					/obj/item/armor_module/armor/arms/light = 20,
+					/obj/item/armor_module/armor/helmet/heavy = 20,
+					/obj/item/armor_module/armor/helmet/medium = 20,
+					/obj/item/armor_module/armor/helmet/light = 20
 					)
 
 	prices = list()
