@@ -60,11 +60,6 @@ OPERATIONS
 	)
 	cost = 5
 
-/datum/supply_packs/operations/tarps
-	name = "V1 thermal-dampening tarp"
-	contains = list(/obj/item/bodybag/tarp)
-	cost = 6
-
 /datum/supply_packs/operations/alpha
 	name = "Alpha Supply Crate"
 	contains = list(/obj/structure/closet/crate/alpha)

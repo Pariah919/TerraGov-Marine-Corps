@@ -97,7 +97,6 @@
 					/obj/item/ammo_magazine/rocket = 3,
 					/obj/item/ammo_magazine/minigun = 2,
 					/obj/item/ammo_magazine/shotgun/mbx900 = 2,
-					/obj/item/bodybag/tarp = 2,
 					/obj/item/explosive/plastique = 2)
 
 /obj/machinery/vending/marine/cargo_guns
