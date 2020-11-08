@@ -1,1 +1,0 @@
-#define VEHICLE_MUST_TURN (1<<0)
