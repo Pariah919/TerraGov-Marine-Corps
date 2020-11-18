@@ -7,6 +7,7 @@
 	siemens_coefficient = 0.9
 	icon_state = "marine_jumpsuit"
 	soft_armor = list("melee" = 5, "bullet" = 5, "laser" = 5, "energy" = 5, "bomb" = 5, "bio" = 5, "rad" = 5, "fire" = 5, "acid" = 5)
+	hard_armor = list("bullet" = 5)
 	rollable_sleeves = TRUE
 	has_sensor = 2
 
