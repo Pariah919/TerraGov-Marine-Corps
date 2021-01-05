@@ -116,11 +116,6 @@
 		go_idle()
 	user.update_icons()
 
-/obj/item/clothing/mask/facehugger/attack_self(mob/user)
-	if(isxenocarrier(user))
-		var/mob/living/carbon/xenomorph/carrier/C = user
-		C.store_hugger(src)
-
 /obj/item/clothing/mask/facehugger/examine(mob/user)
 	. = ..()
 	switch(stat)

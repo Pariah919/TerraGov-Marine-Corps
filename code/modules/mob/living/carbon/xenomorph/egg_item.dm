@@ -83,13 +83,8 @@
 
 /obj/item/xeno_egg/attack_self(mob/user)
 	if(isxeno(user))
-		var/mob/living/carbon/xenomorph/X = user
-		if(isxenocarrier(X))
-			var/mob/living/carbon/xenomorph/carrier/C = X
-			C.store_egg(src)
-		else
-			var/turf/T = get_turf(user)
-			plant_egg(user, T)
+		var/turf/T = get_turf(user)
+		plant_egg(user, T)
 
 
 
