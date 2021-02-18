@@ -364,6 +364,8 @@
 	icon_state = "marinepackt"
 	bypass_w_limit = list(
 		/obj/item/standard_hmg,
+		/obj/item/mortar_kit,
+		/obj/item/mortal_shell,
 		/obj/item/ammo_magazine/standard_hmg,
 		/obj/item/turret_top,
 		/obj/item/ammo_magazine/sentry,
