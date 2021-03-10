@@ -28,8 +28,13 @@
 	name = "Russian Red pill packet"
 	desc = "This packet containts Russian Red pills. Used for field treatment of critical cases without a medic. Once you take them out they don't go back in.."
 	pill_type_to_fill = /obj/item/reagent_containers/pill/russian_red
-	
+
 /obj/item/storage/pill_bottle/packet/ryetalyn
 	name = "Ryetalyn pill packet"
 	desc = "This packet containts Ryetalyn pills. Used to provide a shield against bloodstream toxins. Once you take them out they don't go back in. No more than 2 pills at once."
 	pill_type_to_fill = /obj/item/reagent_containers/pill/ryetalyn
+
+/obj/item/storage/pill_bottle/packet/hypervene
+	name = "Hypervene pill packet"
+	desc = "This packet containts Hypervene pills. Used to purge chemicals from your body. Once you take them out they don't go back in."
+	pill_type_to_fill = /obj/item/reagent_containers/pill/hypervene
