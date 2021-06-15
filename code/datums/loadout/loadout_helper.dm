@@ -41,6 +41,8 @@
 /proc/item2representation_type(item_type)
 	if(ispath(item_type, /obj/item/weapon/gun))
 		return /datum/item_representation/gun
+	if(ispath(item_type, /obj/item/clothing/suit/modular))
+		return /datum/item_representation/modular_armor
 	if(ispath(item_type, /obj/item/storage))
 		return /datum/item_representation/storage
 	if(ispath(item_type, /obj/item/clothing/suit/storage))

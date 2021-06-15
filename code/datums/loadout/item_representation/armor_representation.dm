@@ -67,9 +67,3 @@
 /datum/item_representation/armor_module/proc/install_on_armor(datum/loadout_seller/seller, obj/item/clothing/suit/modular/armor)
 	var/obj/item/armor_module/module = instantiate_object(seller)
 	module.do_attach(null, armor)
-
-/**
- * Allow to representate an armor piece of a xenonauten, and to color it
- * This is only able to representate items of type /obj/item/armor_module/armor
- */
-
