@@ -24,7 +24,7 @@
 	suit.pockets = pockets.instantiate_object(seller, suit)
 
 /**
- * Allow to representate a jaeger modular armor with its modules
+ * Allow to representate a XCAS modular armor with its modules
  * This is only able to representate items of type /obj/item/clothing/suit/modular
  */
 /datum/item_representation/modular_armor
@@ -39,19 +39,19 @@
 	if(!item_to_copy)
 		return
 	if(!ismodulararmor(item_to_copy))
-		CRASH("/datum/item_representation/modular_armor created from an item that is not a jaeger")
+		CRASH("/datum/item_representation/modular_armor created from an item that is not a xenonauten")
 	..()
-	var/obj/item/clothing/suit/modular/jaeger_to_copy = item_to_copy
-	if(jaeger_to_copy.installed_storage)
-		installed_storage = new /datum/item_representation/armor_module(jaeger_to_copy.installed_storage)
-		storage_implementation = new /datum/item_representation/storage(jaeger_to_copy.storage)
-	if(!length(jaeger_to_copy.installed_modules) || !is_savable_in_loadout(jaeger_to_copy.installed_modules[1])) //Not supporting mutiple modules, but no object in game has that so
+	var/obj/item/clothing/suit/modular/xenonauten_to_copy = item_to_copy
+	if(xenonauten_to_copy.installed_storage)
+		installed_storage = new /datum/item_representation/armor_module(xenonauten_to_copy.installed_storage)
+		storage_implementation = new /datum/item_representation/storage(xenonauten_to_copy.storage)
+	if(!length(xenonauten_to_copy.installed_modules) || !is_savable_in_loadout(xenonauten_to_copy.installed_modules[1])) //Not supporting mutiple modules, but no object in game has that so
 		return
-	installed_module = new /datum/item_representation/armor_module(jaeger_to_copy.installed_modules[1])
+	installed_module = new /datum/item_representation/armor_module(xenonauten_to_copy.installed_modules[1])
 
 
 /**
- * Allow to representate an module of a jaeger
+ * Allow to representate an module of a XCAS.
  * This is only able to representate items of type /obj/item/armor_module
  */
 /datum/item_representation/armor_module
@@ -60,7 +60,7 @@
 	if(!item_to_copy)
 		return
 	if(!ismodulararmormodule(item_to_copy))
-		CRASH("/datum/item_representation/armor_module created from an item that is not a jaeger module")
+		CRASH("/datum/item_representation/armor_module created from an item that is not a xenonauten module")
 	..()
 
 ///Attach the instantiated item on an armor
@@ -69,7 +69,7 @@
 	module.do_attach(null, armor)
 
 /**
- * Allow to representate an armor piece of a jaeger, and to color it
+ * Allow to representate an armor piece of a xenonauten, and to color it
  * This is only able to representate items of type /obj/item/armor_module/armor
  */
 
