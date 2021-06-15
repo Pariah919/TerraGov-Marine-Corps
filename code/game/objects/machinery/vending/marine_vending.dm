@@ -859,12 +859,12 @@
 	products = list(
 		"Armors" = list(
 			/obj/item/clothing/suit/storage/marine/pasvest = -1,
-			/obj/item/clothing/suit/modular = -1,
+			/obj/item/clothing/suit/modular/medium = -1,
 			/obj/item/clothing/suit/storage/marine/harness = -1,
 			/obj/item/clothing/suit/armor/vest/pilot = -1,
 			/obj/item/facepaint/green = -1,
 		),
-		"Jaeger modules" = list(
+		"Xenonauten modules" = list(
 			/obj/item/armor_module/storage/general = -1,
 			/obj/item/armor_module/storage/engineering = -1,
 			/obj/item/armor_module/storage/medical = -1,
@@ -896,7 +896,6 @@
 			/obj/item/clothing/under/marine/camo =-1,
 			/obj/item/clothing/under/marine/camo/desert =-1,
 			/obj/item/clothing/under/marine/camo/snow =-1,
-			/obj/item/clothing/under/marine/jaeger =-1,
 			/obj/item/clothing/gloves/marine =-1,
 			/obj/item/clothing/shoes/marine/full = -1,
 			/obj/item/clothing/head/slouch = -1,

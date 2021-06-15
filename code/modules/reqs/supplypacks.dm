@@ -680,7 +680,7 @@ ARMOR
 	available_against_xeno_only = TRUE
 
 /datum/supply_packs/armor/modular/storage
-	name = "Jaeger assorted storage modules"
+	name = "Xenonauten assorted storage modules"
 	contains = list(
 		/obj/item/armor_module/storage/general,
 		/obj/item/armor_module/storage/medical,
@@ -689,7 +689,7 @@ ARMOR
 	cost = 3
 
 /datum/supply_packs/armor/modular/attachments/mixed
-	name = "Jaeger experimental mark 2 modules"
+	name = "Xenonauten experimental mark 2 modules"
 	contains = list(
 		/obj/item/armor_module/attachable/valkyrie_autodoc,
 		/obj/item/armor_module/attachable/fire_proof,
@@ -701,46 +701,46 @@ ARMOR
 	cost = 40
 
 /datum/supply_packs/armor/modular/attachments/lamp
-	name = "Jaeger baldur modules"
+	name = "Xenonauten baldur modules"
 	contains = list(
 		/obj/item/armor_module/attachable/better_shoulder_lamp,
 	)
 	cost = 10
 
 /datum/supply_packs/armor/modular/attachments/valkyrie_autodoc
-	name = "Jaeger valkyrie modules"
+	name = "Xenonauten valkyrie modules"
 	contains = list(
 		/obj/item/armor_module/attachable/valkyrie_autodoc,
 	)
 	cost = 12
 
 /datum/supply_packs/armor/modular/attachments/fire_proof
-	name = "Jaeger surt modules"
+	name = "Xenonauten surt modules"
 	contains = list(
 		/obj/item/armor_module/attachable/fire_proof,
 	)
 	cost = 12
 
 /datum/supply_packs/armor/modular/attachments/tyr_extra_armor
-	name = "Jaeger tyr mark 2 modules"
+	name = "Xenonauten tyr mark 2 modules"
 	contains = list(
 		/obj/item/armor_module/attachable/tyr_extra_armor,
 	)
 	cost = 12
 
 /datum/supply_packs/armor/modular/attachments/mimir_environment_protection
-	name = "Jaeger mimir module"
+	name = "Xenonauten mimir module"
 	contains = list(
 		/obj/item/armor_module/attachable/mimir_environment_protection,
 	)
 	cost = 12
 
 /datum/supply_packs/armor/modular/attachments/mimir_helmet_protection
-	name = "Jaeger helmet mimir module"
+	name = "Xenonauten helmet mimir module"
 	contains = list(/obj/item/helmet_module/attachable/mimir_environment_protection)
 	cost = 5
 /datum/supply_packs/armor/modular/attachments/generic_helmet_modules
-	name = "Generic Jaeger helmet modules"
+	name = "Generic Xenonauten helmet modules"
 	contains = list(
 		/obj/item/helmet_module/welding,
 		/obj/item/helmet_module/welding,
@@ -751,7 +751,7 @@ ARMOR
 	)
 	cost = 5
 /datum/supply_packs/armor/modular/attachments/hlin_bombimmune
-	name = "Jaeger Hlin module"
+	name = "Xenonauten Hlin module"
 	contains = list(/obj/item/armor_module/attachable/hlin_explosive_armor)
 	cost = 12
 
