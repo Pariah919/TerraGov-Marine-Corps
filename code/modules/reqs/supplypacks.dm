@@ -679,57 +679,6 @@ ARMOR
 	cost = 20
 	available_against_xeno_only = TRUE
 
-// Modular armor + Attachments
-/datum/supply_packs/armor/modular/exosuit
-	name = "Jaeger exosuits"
-	contains = list(/obj/item/clothing/suit/modular)
-	cost = 1
-
-/datum/supply_packs/armor/modular/armor/infantry
-	name = "Jaeger Medium Infantry plates"
-	contains = list(
-		/obj/item/clothing/head/modular/marine,
-		/obj/item/armor_module/armor/chest/marine,
-		/obj/item/armor_module/armor/arms/marine,
-		/obj/item/armor_module/armor/legs/marine,
-	)
-	cost = 1
-
-/datum/supply_packs/armor/modular/armor/skirmisher
-	name = "Jaeger Light Skirmisher plates"
-	contains = list(
-		/obj/item/clothing/head/modular/marine/skirmisher,
-		/obj/item/armor_module/armor/chest/marine/skirmisher,
-		/obj/item/armor_module/armor/arms/marine/skirmisher,
-		/obj/item/armor_module/armor/legs/marine/skirmisher,
-	)
-	cost = 1
-
-/datum/supply_packs/armor/modular/armor/assault
-	name = "Jaeger Heavy Assault plates"
-	contains = list(
-		/obj/item/clothing/head/modular/marine/assault,
-		/obj/item/armor_module/armor/chest/marine/assault,
-		/obj/item/armor_module/armor/arms/marine/assault,
-		/obj/item/armor_module/armor/legs/marine/assault,
-	)
-	cost = 1
-
-/datum/supply_packs/armor/modular/helmet/infantry
-	name = "Jaeger heavy helmets"
-	contains = list(/obj/item/clothing/head/modular/marine)
-	cost = 1
-
-/datum/supply_packs/armor/modular/helmet/skirmisher
-	name = "Jaeger medium helmets"
-	contains = list(/obj/item/clothing/head/modular/marine/skirmisher)
-	cost = 1
-
-/datum/supply_packs/armor/modular/helmet/assault
-	name = "Jaeger light helmets"
-	contains = list(/obj/item/clothing/head/modular/marine/assault)
-	cost = 1
-
 /datum/supply_packs/armor/modular/storage
 	name = "Jaeger assorted storage modules"
 	contains = list(

@@ -42,13 +42,6 @@
 
 	actions_types = list(/datum/action/item_action/toggle)
 
-	/// Attachment slots for chest armor
-	var/obj/item/armor_module/armor/slot_chest
-	/// Attachment slots for arm armor
-	var/obj/item/armor_module/armor/slot_arms
-	/// Attachment slots for leg armor
-	var/obj/item/armor_module/armor/slot_legs
-
 	/** Installed modules */
 	/// How many modules you can have
 	var/max_modules = 1
@@ -67,10 +60,6 @@
 
 
 /obj/item/clothing/suit/modular/Destroy()
-	QDEL_NULL(slot_chest)
-	QDEL_NULL(slot_arms)
-	QDEL_NULL(slot_legs)
-
 	QDEL_LIST(installed_modules)
 	installed_modules = null
 	QDEL_NULL(installed_storage)
@@ -78,12 +67,6 @@
 	return ..()
 
 /obj/item/clothing/suit/modular/apply_custom(image/standing)
-	if(slot_chest)
-		standing.overlays += image(slot_chest.icon, ITEM_STATE_IF_SET(slot_chest))
-	if(slot_arms)
-		standing.overlays += image(slot_arms.icon, ITEM_STATE_IF_SET(slot_arms))
-	if(slot_legs)
-		standing.overlays += image(slot_legs.icon, ITEM_STATE_IF_SET(slot_legs))
 	for(var/mod in installed_modules)
 		var/obj/item/armor_module/module = mod
 		standing.overlays += image(module.icon, ITEM_STATE_IF_SET(module))
@@ -219,45 +202,6 @@
 	return TRUE
 
 
-/obj/item/clothing/suit/modular/crowbar_act(mob/living/user, obj/item/I)
-	. = ..()
-	if(.)
-		return
-
-	if(user.do_actions)
-		return FALSE
-
-	if(ismob(loc) && (user.r_hand != src && user.l_hand != src))
-		to_chat(user, "<span class='warning'>You need to remove the armor first.</span>")
-		return TRUE
-
-	var/list/obj/item/armor_module/armor/armor_slots = list()
-	if(slot_chest)
-		armor_slots += slot_chest
-	if(slot_arms)
-		armor_slots += slot_arms
-	if(slot_legs)
-		armor_slots += slot_legs
-
-	if(!length(armor_slots))
-		to_chat(user, "<span class='notice'>There is nothing to remove</span>")
-		return TRUE
-
-	var/obj/item/armor_module/armor/armor_slot
-	if(length(armor_slots) == 1) // Single item (just take it)
-		armor_slot = armor_slots[1]
-	else if(length(armor_slots) > 1) // Multi item, ask which piece
-		armor_slot = tgui_input_list(user, "Which armor piece would you like to remove", "Remove armor piece", armor_slots)
-	if(!armor_slot)
-		return TRUE
-
-	if(!can_detach(user, armor_slot))
-		return TRUE
-	armor_slot.do_detach(user, src)
-	update_overlays()
-	return TRUE
-
-
 /obj/item/clothing/suit/modular/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(.)
@@ -286,13 +230,6 @@
 	if(overlays)
 		cut_overlays()
 
-	if(slot_chest)
-		add_overlay(image(slot_chest.icon, slot_chest.icon_state))
-	if(slot_arms)
-		add_overlay(image(slot_arms.icon, slot_arms.icon_state))
-	if(slot_legs)
-		add_overlay(image(slot_legs.icon, slot_legs.icon_state))
-
 	// we intentionally do not add modules here
 	// as the icons are not made to be added in world, only on mobs.
 
@@ -312,12 +249,6 @@
 			. += "<li>[mod]</li>"
 	. += "</ul>"
 
-	if(slot_chest)
-		. += "<br> It has a [slot_chest] installed."
-	if(slot_arms)
-		. += "<br> It has a [slot_arms] installed."
-	if(slot_legs)
-		. += "<br> It has a [slot_legs] installed."
 	if(installed_storage)
 		. += "<br> It has a [installed_storage] installed."
 
@@ -341,8 +272,6 @@
 	item_state = list(
 		slot_head_str = ""
 	)
-	greyscale_config = /datum/greyscale_config/modularhelmet_infantry
-	greyscale_colors = "#5B6036#f7fb58"
 	//head icon is generated so null this
 	item_state_slots = list(
 		slot_head_str = null,
@@ -354,92 +283,17 @@
 	/// How long it takes to attach or detach to this item
 	var/equip_delay = 3 SECONDS
 
-	///whether this helmet should be using its emissive overlay or not
-	var/visor_emissive_on = TRUE
-	///Initial hex color we use when applying the visor color
-	var/visor_color_hex = "#f7fb58"
-	///Greyscale config color we use for the visor
-	var/visor_greyscale_config = /datum/greyscale_config/modular_helmet_visor_emissive
-
-	///Assoc list of color-hex for colors we're allowed to color this armor
-	var/static/list/colorable_colors = list(
-		"black" = "#474A50",
-		"snow" = "#D5CCC3",
-		"desert" = "#A57F7C",
-		"gray" = "#828282",
-		"brown" = "#60452B",
-		"red" = "#CC2C32",
-		"blue" = "#2A4FB7",
-		"yellow" = "#B7B21F",
-		"green" = "#2B7F1E",
-		"aqua" = "#2098A0",
-		"purple" = "#871F8F",
-		"orange" = "#BC4D25",
-		"pink" = "#D354BA",
-	)
-
-/obj/item/clothing/head/modular/Initialize(mapload)
-	. = ..()
-	if(!visor_emissive_on || !visor_greyscale_config)
-		return
-	AddElement(/datum/element/special_clothing_overlay/modular_helmet_visor, HEAD_LAYER, visor_greyscale_config, visor_color_hex)
-	update_icon()
-
 /obj/item/clothing/head/modular/Destroy()
 	QDEL_NULL(installed_module)
 	return ..()
 
-/obj/item/clothing/head/modular/update_greyscale(list/colors, update)
-	. = ..()
-	item_icons = list(slot_head_str = icon)
-	item_state = list(slot_head_str = "")
-	if(length(colors) >= 2) //for only single color helmets with no visor
-		visor_color_hex = colors[2]
-
 /obj/item/clothing/head/modular/examine(mob/user, distance, infix, suffix)
 	. = ..()
-	if(visor_greyscale_config)
-		to_chat(user, "Right click the helmet to toggle the visor internal lighting.")
 
 /obj/item/clothing/head/modular/attackby(obj/item/I, mob/user, params)
 	. = ..()
 	if(.)
 		return
-
-	if(!istype(I, /obj/item/facepaint))
-		return FALSE
-
-	var/obj/item/facepaint/paint = I
-	if(paint.uses < 1)
-		to_chat(user, "<span class='warning'>\the [paint] is out of color!</span>")
-		return TRUE
-	paint.uses--
-
-	var/new_color = tgui_input_list(user, "Pick a color", "Pick color", colorable_colors)
-	if(!new_color)
-		return
-	new_color = colorable_colors[new_color]
-
-	if(!do_after(user, 1 SECONDS, TRUE, src, BUSY_ICON_GENERIC))
-		return TRUE
-
-	var/list/split_colors = list(new_color)
-	if(visor_color_hex)
-		split_colors += visor_color_hex
-	set_greyscale_colors(split_colors)
-	return TRUE
-
-/obj/item/clothing/head/modular/attack_hand_alternate(mob/living/carbon/human/user)
-	if(user.head == src)
-		return //must NOT be worn to toggle
-	if(!visor_greyscale_config)
-		return
-	visor_emissive_on = !visor_emissive_on
-	if(visor_emissive_on)
-		AddElement(/datum/element/special_clothing_overlay/modular_helmet_visor, HEAD_LAYER, visor_greyscale_config, visor_color_hex)
-	else
-		RemoveElement(/datum/element/special_clothing_overlay/modular_helmet_visor, HEAD_LAYER, visor_greyscale_config, visor_color_hex)
-	update_icon()
 
 /obj/item/clothing/head/modular/item_action_slot_check(mob/user, slot)
 	if(!ishuman(user))
@@ -493,8 +347,6 @@
 	. = ..()
 	if(installed_module)
 		. += image(installed_module.icon, installed_module.item_state)
-	if(visor_emissive_on)
-		. += emissive_appearance('icons/mob/modular/infantry.dmi', "visor")
 
 /obj/item/clothing/head/modular/apply_custom(image/standing)
 	if(installed_module)
@@ -533,63 +385,3 @@
 	if(!do_after(user, equip_delay, TRUE, user, BUSY_ICON_GENERIC))
 		return FALSE
 	update_overlays()
-
-/obj/item/clothing/head/modular/marine
-	name = "Jaeger Pattern Infantry Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Infantry markings."
-	icon_state = "infantry_helmet"
-	soft_armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 50, "rad" = 50, "fire" = 50, "acid" = 50)
-	accuracy_mod = 0
-	greyscale_config = /datum/greyscale_config/modularhelmet_infantry
-	visor_greyscale_config = /datum/greyscale_config/modular_helmet_visor_emissive
-
-/obj/item/clothing/head/modular/marine/skirmisher
-	name = "Jaeger Pattern Skirmisher Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Skirmisher markings."
-	icon_state = "skirmisher_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_skirmisher
-	visor_greyscale_config = /datum/greyscale_config/modular_helmet_visor_emissive/skirmisher
-
-/obj/item/clothing/head/modular/marine/assault
-	name = "Jaeger Pattern Assault Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Assault markings."
-	icon_state = "assault_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_assault
-	visor_greyscale_config = /datum/greyscale_config/modular_helmet_visor_emissive/assault
-
-/obj/item/clothing/head/modular/marine/eva
-	name = "Jaeger Pattern EVA Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has EVA markings."
-	icon_state = "eva_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_eva
-	visor_greyscale_config = /datum/greyscale_config/modular_helmet_visor_emissive/eva
-
-/obj/item/clothing/head/modular/marine/eva/skull
-	name = "Jaeger Pattern EVA Skull Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has EVA markings and a skull on the visor."
-	icon_state = "eva_skull_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_eva_skull
-	visor_greyscale_config = /datum/greyscale_config/modular_helmet_visor_emissive_skull
-
-/obj/item/clothing/head/modular/marine/eod
-	name = "Jaeger Pattern EOD Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has EOD markings"
-	icon_state = "eod_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_eod
-	visor_greyscale_config = /datum/greyscale_config/modular_helmet_visor_emissive/eod
-
-/obj/item/clothing/head/modular/marine/scout
-	name = "Jaeger Pattern Scout Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Scout markings"
-	icon_state = "scout_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_scout
-	visor_greyscale_config = /datum/greyscale_config/modular_helmet_visor_emissive/scout
-
-/obj/item/clothing/head/modular/marine/infantry
-	name = "Jaeger Pattern Infantry-Open Helmet"
-	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Infantry markings and no visor."
-	icon_state = "infantryopen_helmet"
-	greyscale_colors = "#5B6036"
-	greyscale_config = /datum/greyscale_config/modularhelmet_infantry_open
-	visor_color_hex = null //no visor, no color
-	visor_greyscale_config = null
