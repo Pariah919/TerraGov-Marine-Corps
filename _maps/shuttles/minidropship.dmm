@@ -9,25 +9,13 @@
 /obj/effect/attach_point/weapon/minidropship,
 /turf/closed/wall/mainship/outer/reinforced,
 /area/shuttle/minidropship)
-"h" = (
-/turf/open/floor/mainship/orange{
-	dir = 4
-	},
-/area/shuttle/minidropship)
-"i" = (
-/turf/open/floor/mainship/orange{
-	dir = 9
-	},
-/area/shuttle/minidropship)
 "j" = (
 /obj/machinery/door_control{
 	id = "minidropship_podlock";
 	name = "outer door-control";
 	pixel_y = 32
 	},
-/turf/open/floor/mainship/orange{
-	dir = 5
-	},
+/turf/open/shuttle/dropship/floor,
 /area/shuttle/minidropship)
 "n" = (
 /obj/structure/window/framed/mainship/spaceworthy{
@@ -39,29 +27,15 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/mainship/orange{
-	dir = 8
-	},
+/turf/open/shuttle/dropship/floor,
 /area/shuttle/minidropship)
 "s" = (
-/turf/open/floor/mainship/floor,
+/obj/effect/attach_point/crew_weapon/minidropship,
+/turf/open/shuttle/dropship/floor,
 /area/shuttle/minidropship)
 "u" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/minidropship,
-/turf/open/floor/mainship/orange,
-/area/shuttle/minidropship)
-"v" = (
-/obj/machinery/door/poddoor/shutters/transit{
-	dir = 2
-	},
-/obj/machinery/door/poddoor/mainship/open{
-	dir = 2;
-	id = "minidropship_podlock"
-	},
-/obj/structure/barricade/plasteel,
-/turf/open/floor/mainship/orange{
-	dir = 10
-	},
+/turf/open/shuttle/dropship/floor,
 /area/shuttle/minidropship)
 "B" = (
 /turf/closed/wall/mainship/outer/reinforced,
@@ -74,17 +48,13 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/turf/open/floor/mainship/orange{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/floor,
 /area/shuttle/minidropship)
 "I" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/mainship/orange{
-	dir = 4
-	},
+/turf/open/shuttle/dropship/floor,
 /area/shuttle/minidropship)
 "K" = (
 /obj/structure/window/framed/mainship/spaceworthy{
@@ -96,6 +66,16 @@
 /obj/structure/shuttle/engine/propulsion/burst/left,
 /turf/open/shuttle/dropship/three,
 /area/shuttle/minidropship)
+"M" = (
+/obj/machinery/door/poddoor/mainship/open{
+	id = "minidropship_podlock"
+	},
+/obj/machinery/door/poddoor/shutters/transit,
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/grating,
+/area/shuttle/minidropship)
 "N" = (
 /obj/machinery/door/poddoor/shutters/transit{
 	dir = 2
@@ -105,7 +85,7 @@
 	id = "minidropship_podlock"
 	},
 /obj/structure/barricade/plasteel,
-/turf/open/floor/mainship/orange,
+/turf/open/shuttle/dropship/grating,
 /area/shuttle/minidropship)
 "O" = (
 /obj/structure/barricade/plasteel{
@@ -115,9 +95,7 @@
 	id = "minidropship_podlock"
 	},
 /obj/machinery/door/poddoor/shutters/transit,
-/turf/open/floor/mainship/orange{
-	dir = 4
-	},
+/turf/open/shuttle/dropship/grating,
 /area/shuttle/minidropship)
 "R" = (
 /obj/machinery/door/poddoor/shutters/transit{
@@ -127,10 +105,8 @@
 	dir = 2;
 	id = "minidropship_podlock"
 	},
-/obj/structure/barricade/plasteel,
-/turf/open/floor/mainship/orange{
-	dir = 6
-	},
+/obj/structure/barricade/metal,
+/turf/open/shuttle/dropship/grating,
 /area/shuttle/minidropship)
 "S" = (
 /obj/structure/window/framed/mainship/spaceworthy{
@@ -146,22 +122,24 @@
 	id = "minidropship_podlock"
 	},
 /obj/machinery/door/poddoor/shutters/transit,
-/turf/open/floor/mainship/orange{
-	dir = 8
-	},
+/turf/open/shuttle/dropship/grating,
 /area/shuttle/minidropship)
 "U" = (
 /obj/structure/shuttle/engine/propulsion/burst/right,
 /turf/open/shuttle/dropship/three,
 /area/shuttle/minidropship)
-"V" = (
-/turf/open/floor/mainship/orange{
-	dir = 8
+"W" = (
+/obj/machinery/door/poddoor/mainship/open{
+	id = "minidropship_podlock"
 	},
+/obj/machinery/door/poddoor/shutters/transit,
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/grating,
 /area/shuttle/minidropship)
 "Y" = (
-/obj/effect/attach_point/crew_weapon/minidropship,
-/turf/open/floor/mainship/floor,
+/turf/open/shuttle/dropship/floor,
 /area/shuttle/minidropship)
 
 (1,1,1) = {"
@@ -181,7 +159,7 @@ E
 E
 b
 O
-O
+M
 B
 L
 E
@@ -191,10 +169,10 @@ E
 E
 S
 K
-i
-V
+Y
+Y
 r
-v
+R
 E
 "}
 (4,1,1) = {"
@@ -214,7 +192,7 @@ E
 a
 K
 j
-h
+Y
 I
 R
 E
@@ -225,7 +203,7 @@ E
 E
 b
 T
-T
+W
 B
 U
 E
