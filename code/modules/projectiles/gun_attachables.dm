@@ -938,13 +938,6 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	pixel_shift_x = 32
 	pixel_shift_y = 13
 
-/obj/item/attachable/stock/irremoveable/kar98
-	name = "Kar98k wooden stock"
-	desc = "A long wooden stock for a Karabiner 98k rifle."
-	icon_state = "kar98kstock"
-	pixel_shift_x = 32
-	pixel_shift_y = 13
-
 /obj/item/attachable/stock/irremoveable/pal12
 	name = "Paladin-12 pump shotgun stock"
 	desc = "A standard light stock for the Paladin-12 shotgun."
@@ -1845,3 +1838,12 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	size_mod = 1
 	detach_delay = 0
 	gun_attachment_offset_mod = list("muzzle_x" = 8)
+
+/obj/item/attachable/kar98kbarrel
+	name = "Kar98k Barrel"
+	desc = "The barrel for a Kar98 rifle."
+	icon_state = "kar98barrel"
+	slot = ATTACHMENT_BARREL_MOD
+	flags_attach_features = NONE
+	pixel_shift_x = -32
+	pixel_shift_y = 0

@@ -672,7 +672,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/bolt/kar98k
 	name = "\improper Kar98k trench rifle"
-	desc = "A Karabiner 98, or Kar98k rifle, a famed rifle of it's time, used in many, many conflicts. Famed for it's accuracy in sniper roles. Famed to be a flat shooter at about one thousand meters."
+	desc = "This is a Karabiner 98, or better known as the Kar98, a famed rifle of it's time, used in many, many conflicts. Famed for it's accuracy in sniper roles. Famed to be a flat shooter at about one thousand meters."
 	icon = 'icons/Marine/gun64.dmi'
 	icon_state = "kar98k"
 	item_state = "mosin"
@@ -704,11 +704,11 @@ can cause issues with ammo types getting mixed up during the burst.
 	aim_fire_delay = 0.125 SECONDS
 
 	starting_attachment_types = list(
-		/obj/item/attachable/stock/irremoveable/kar98,
-		/obj/item/attachable/stock/mosin,
+		/obj/item/attachable/kar98kbarrel,
+		/obj/item/attachable/scope/mosin,
 	)
 
-	fire_delay = 17.5
+	fire_delay = 1
 	accuracy_mult = 1.45
 	accuracy_mult_unwielded = 0.7
 	scatter = -25
@@ -716,7 +716,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = 0
 	recoil_unwielded = 4
 	pump_delay = 12
-	aim_slowdown = 1
+	aim_slowdown = 0.8
 	wield_delay = 1 SECONDS
 
 //***********************************************************
