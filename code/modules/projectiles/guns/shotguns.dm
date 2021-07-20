@@ -667,6 +667,58 @@ can cause issues with ammo types getting mixed up during the burst.
 		pump_lock = FALSE //we're operating the slide release to unload, thus unlocking the pump
 	return ..()
 
+//------------------------------------------------------
+//A alternative with aim mode, with DIFFERENT STATS OR SOMETHING
+
+/obj/item/weapon/gun/shotgun/pump/bolt/kar98k
+	name = "\improper Kar98k trench rifle"
+	desc = "A Karabiner 98, or Kar98k rifle, a famed rifle of it's time, used in many, many conflicts. Famed for it's accuracy in sniper roles. Famed to be a flat shooter at about one thousand meters."
+	icon = 'icons/Marine/gun64.dmi'
+	icon_state = "kar98k"
+	item_state = "mosin"
+	fire_sound = 'sound/weapons/guns/fire/kar98k.ogg'
+	dry_fire_sound = 'sound/weapons/guns/fire/sniper_empty.ogg'
+	reload_sound = 'sound/weapons/guns/interact/mosin_reload.ogg'
+	caliber = CALIBER_762X54 //codex
+	load_method = SINGLE_CASING //codex
+	max_shells = 5 //codex
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/pump/bolt
+	gun_skill_category = GUN_SKILL_RIFLES
+	type_of_casings = "cartridge"
+	pump_sound = 'sound/weapons/guns/interact/working_the_bolt.ogg'
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/bayonetknife,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mosin,
+		/obj/item/attachable/scope/marine,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/bayonet,
+	)
+	flags_item_map_variant = NONE
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = 15, "stock_y" = 12)
+
+	actions_types = list(/datum/action/item_action/aim_mode)
+	aim_fire_delay = 0.125 SECONDS
+
+	starting_attachment_types = list(
+		/obj/item/attachable/stock/irremoveable/kar98,
+		/obj/item/attachable/stock/mosin,
+	)
+
+	fire_delay = 17.5
+	accuracy_mult = 1.45
+	accuracy_mult_unwielded = 0.7
+	scatter = -25
+	scatter_unwielded = 40
+	recoil = 0
+	recoil_unwielded = 4
+	pump_delay = 12
+	aim_slowdown = 1
+	wield_delay = 1 SECONDS
+
 //***********************************************************
 // Martini Henry
 

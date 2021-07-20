@@ -938,6 +938,13 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	pixel_shift_x = 32
 	pixel_shift_y = 13
 
+/obj/item/attachable/stock/irremoveable/kar98
+	name = "Kar98k wooden stock"
+	desc = "A long wooden stock for a Karabiner 98k rifle."
+	icon_state = "kar98kstock"
+	pixel_shift_x = 32
+	pixel_shift_y = 13
+
 /obj/item/attachable/stock/irremoveable/pal12
 	name = "Paladin-12 pump shotgun stock"
 	desc = "A standard light stock for the Paladin-12 shotgun."
