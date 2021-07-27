@@ -540,7 +540,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	if(client && hud_used?.hud_shown)
-		belt.screen_loc = ui_belt
+		belt.screen_loc = "WEST+4:24,SOUTH-1:2"
 		client.screen += belt
 
 	overlays_standing[BELT_LAYER] = belt.make_worn_icon(body_type = species.name, slot_name = slot_belt_str, default_icon = 'icons/mob/belt.dmi', default_layer = BELT_LAYER)
@@ -566,7 +566,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_inv_pockets()
 	if(l_store)
 		if(client && hud_used?.hud_shown)
-			l_store.screen_loc = ui_storage1
+			l_store.screen_loc = "WEST+3:8,SOUTH-1:2"
 			client.screen += l_store
 	if(r_store)
 		if(client && hud_used?.hud_shown)
@@ -596,7 +596,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!back)
 		return
 	if(client && hud_used?.hud_shown)
-		back.screen_loc = ui_back
+		back.screen_loc = "WEST+7:40,SOUTH-1"
 		client.screen += back
 
 	overlays_standing[BACK_LAYER] = back.make_worn_icon(body_type = species.name, slot_name = slot_back_str, default_icon = 'icons/mob/back.dmi', default_layer = BACK_LAYER)
@@ -632,7 +632,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	if(client && hud_used?.hud_version != HUD_STYLE_NOHUD)
 		client.screen += l_hand
-		l_hand.screen_loc = ui_lhand
+		l_hand.screen_loc = "WEST+9:16,SOUTH-1"
 
 	overlays_standing[L_HAND_LAYER] = l_hand.make_worn_icon(body_type = species.name, inhands = TRUE, slot_name = slot_l_hand_str, default_icon = 'icons/mob/items_lefthand_0.dmi', default_layer = L_HAND_LAYER)
 	apply_overlay(L_HAND_LAYER)
