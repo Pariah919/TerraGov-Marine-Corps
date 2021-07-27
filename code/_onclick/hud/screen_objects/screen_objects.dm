@@ -175,12 +175,12 @@
 
 	if(C.internal)
 		C.internal = null
-		to_chat(C, "<span class='notice'>No longer running on internals.</span>")
+		to_chat(C, span_notice("No longer running on internals."))
 		icon_state = "internal0"
 		return
 
 	if(!istype(C.wear_mask, /obj/item/clothing/mask))
-		to_chat(C, "<span class='notice'>You are not wearing a mask.</span>")
+		to_chat(C, span_notice("You are not wearing a mask."))
 		return TRUE
 
 	var/list/nicename = null
@@ -228,15 +228,14 @@
 				bestpressure = t.pressure
 
 	if(best)
-		to_chat(C, "<span class='notice'>You are now running on internals from [tankcheck[best]] on your [nicename[best]].</span>")
+		to_chat(C, span_notice("You are now running on internals from [tankcheck[best]] on your [nicename[best]]."))
 		C.internal = tankcheck[best]
 
 
 	if(C.internal)
 		icon_state = "internal1"
 	else
-		to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
-
+		to_chat(C, span_notice("You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank."))
 
 /obj/screen/mov_intent
 	name = "run/walk toggle"
@@ -735,7 +734,8 @@
 			spawn(20)
 				user.client.screen -= F
 				qdel(F)
-				overlays += empty
+				if(G.get_ammo_count() == 0)
+					overlays += empty
 	else
 		warned = FALSE
 		overlays += image('icons/mob/ammoHUD.dmi', src, "[hud_state]")
