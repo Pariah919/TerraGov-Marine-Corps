@@ -570,6 +570,7 @@
 	screen_loc = ui_sl_dir
 
 /obj/screen/firearms
+	icon = 'icons/mob/hud_32x32.dmi'
 
 /obj/screen/firearms/Click()
 	return get_active_firearm(usr)
@@ -738,7 +739,7 @@
 	else
 		warned = FALSE
 		overlays += image('icons/mob/ammoHUD.dmi', src, "[hud_state]")
-	*/
+
 	rounds = num2text(rounds)
 
 	//Handle the amount of rounds
@@ -841,4 +842,3 @@
 	icon_state = "Red_arrow"
 	duration = HUNTER_PSYCHIC_TRACE_COOLDOWN
 	color = COLOR_ORANGE
-			overlays += image('icons/mob/ammoHUD.dmi', src, "h9")
