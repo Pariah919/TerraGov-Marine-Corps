@@ -181,32 +181,33 @@
 		It should be noted that the user will need to be aware and at the ready before discharging them."
 
 /datum/codex_entry/sniper_rifle
+	display_name = "MM42"
 	associated_paths = list(/obj/item/weapon/gun/rifle/sniper/antimaterial)
-	lore_text = "A rather strange gun in the TGMC's arsenal. The M42A \"Express\" originally was born out of it's younger brother the M42. Made by the same \
-	company who eventually went on to design the M56 smartgun system. Which the M42As specialized scope eventually adopted a modified IFF system similar to it's cousin the smartgun. <br><br>\
-	It was at first marketed to PMCs and civilians as an expensive accurate long range rifle but it failed due to the lack of need for such a thing for PMCs and the wide variety of options \
-	already available for civilians in a more affordable package. The company after the failure went onto design the M56 smartgun and succeeded there however. Which kept them afloat after the failure of the M42.<br><br>\
-	Later however an announcement by the Marine Corps who decided to replace the aging supply of the current adopted Sniper Rifle after complaints that the frames were starting to wear out due to long-term use and thus trials would be announced to replace them.<br><br>\
-	Eventually, the board of directors decided to give that reviving the M42 design was a worthwhile possibility. And thus the design was decided to be modernized and equipped with an IFF-capable scope, after that it was named as the M42A and submitted to go the trials.<br><br>\
-	Though high unit cost didn't allow it to be more widely adopted it was eventually decided that it would meet limited adoption for Marksmen and be designated the T-26."
+	lore_text = "A rather strange gun in the TGMC's arsenal. The MM42 is a Medium Range EOD Disposal and Anti Material tool used to displace targets with high caliber fire at medium range.\
+	The order came out after massive use of explosive devices and light armored targets. It uses a rapid IFF system to track targets in it's range. <br><br>\
+	The MM42 was originally intended to be a rifle for civillian use before it was militarized for use of the massive 10x28 round. \
+	While the MM42 massively failed in the commerical market, it did attract military contracts due to it's amazing accuracy, which eventually lead the company to winning a contract to make rifles for the Corps.<br><br>\
+	The modern MM42's main feature is in it's scope, which in the base features is desinged by one man, named Brunning Kruger, it uses a specialized Laser Designator that helps the user avoid friendlies and fire on weakpoints, massively making it easier to use, however expenses per unit is high.<br><br>\
+	Eventually after some modifications to the initial rifle design, such as a stronger barrel. It ended up in the hands of the modern marksman, and is quite well known for it's effectiveness in combat. It was named as the T-26 Antimaterial rifle. Same as the T-26 Grenade launcher, this confuses everybody."
 
 /datum/codex_entry/battle_rifle
+	display_name = "Modell 8"
 	associated_paths = list(/obj/item/weapon/gun/rifle/tx8)
-	lore_text = "The M45A was born from a commission order from the TGMC to the company which made the M42A and M56 smartgun systems. <br><br>\
-	The reason for this commission order resulted from complaints from light infantry and scout units about the poor accuracy of the new T-26 \
-	carbine at longer ranges and the large size of the T-29 making close combat uncomfortable eventually reached the higher ups, who kept getting \
-	the same complaints over and over. So they eventually reached out to a trusted company to do it.<br><br>\
+	lore_text = "The Modell 8 was born from a commission order from the TGMC to the man which made the MM42 and SMMG systems, Bruuning Kruger. <br><br>\
+	The reason for this commission order resulted from complaints from light infantry and scout units about the poor performance of the new T-26 SMMG \
+	at longer ranges and the large size of the T-29 and the MM42 being effectively useless at close combat and uncomfortable to carry on long hikes eventually reached the higher ups, who kept getting \
+	the same complaints over and over. So they eventually reached out to the very man to do something about it.<br><br>\
 	The commission order requested a versatile rifle that can do combat at all ranges but can be compact. <br><br>\
-	Eventually, the designers decided to use the same 10x28 round the M42A used with different pressure specifications \
-	the ammo used for the M45A was pretty much purpose-built to use.<br><br>\
-	It was also decided to use a bullpup configuration to keep the size compact and to allow for a longer barrel \
-	while keeping the size small. This resulted in a gun created for specialized troops to use at longer than usual \
-	ranges and at close range quite effectively.<br><br>\
-	After tests by the troops it was meant to be supplied to (light infantry and scout troops) it was rather well-liked \
+	Eventually, Kruger and his designers decided to use the same 10x28 round the MM42 used with far lower pressure specifications \
+	the ammo used for the MM42 was pretty much purpose-built to be only used in it.<br><br>\
+	It was also decided to use a traditional rifle design, and for a heavy barrel to reduce recoil felt, and for a specialized intergral IFF infrared system. \
+	This resulted in a gun created for specialized troops to use in close and long ranges without fear of shooting at friendlies, allowing for far more agressive use of the rifle.<br><br>\
+	After tests by the troops it was meant to be supplied to (light infantry and scout troops) it was rather well-liked due to the high damage, light weight and effective use for shooting through light cover.\
 	and was met with limited adoption for light infantry and scout troops.<br><br>\
-	The TGMC gave it the designation of T-45 after adoption."
+	The TGMC gave it the designation of TX-8 after adoption."
 
 /datum/codex_entry/rocket_launcher
+	display_name = "SADAR"
 	associated_paths = list(/obj/item/weapon/gun/launcher/rocket)
 	lore_text = "Nicknamed the \"SADAR\", which refers to the previous rocket launcher the SU-185 eventually replaced. <br><br>\
 	The SU-185 was designed with low weight to be easy to carry on one's back and still be able to carry rockets on the person who \
@@ -220,6 +221,7 @@
 	spaces makes it even used less. Not that it makes it any less dangerous on an open field."
 
 /datum/codex_entry/standard_shotgun
+	display_name = "K23"
 	associated_paths = list(/obj/item/weapon/gun/shotgun/pump/t35)
 	lore_text = "The K23 itself was designed at first for military use as 12 gauge pump-action shotguns were starting to pick up steam \
 	again due to advancements in ammunition made them much more effective at breaking doors and simple masterkey shotguns were starting \
@@ -229,6 +231,7 @@
 	advancements in  ammunition allowed shotguns to punch through common ballistic armor, making it a popular option for close quarters situations."
 
 /datum/codex_entry/standard_revolver
+	display_name = "RN-44"
 	associated_paths = list(/obj/item/weapon/gun/revolver/standard_revolver)
 	lore_text = "The original RN-44 used to be the only standard issue sidearm of the TGMC. Though it was once going to \
 	be fully replaced by the T-27 once that was adopted, it was eventually decided to be kept due to complaints from \
@@ -239,6 +242,7 @@
 	due to its good accuracy and ability to stay in good condition for long periods of time. Eventually ending up as the original TP-44."
 
 /datum/codex_entry/standard_pistol
+	display_name = "RL-9"
 	associated_paths = list(/obj/item/weapon/gun/pistol/standard_pistol)
 	lore_text = "The RL-9's design was created to require as little maintenance for a Pistol in a long period of time in-order \
 	to compete during the new trials to be put up by the Marine Corps once they decided the TP-44 Revolver was too cumbersome for normal use. <br><br>\
@@ -250,6 +254,7 @@
 	replacing the TP-44 which would later eventually be modernized."
 
 /datum/codex_entry/standard_assaultrifle
+	display_name = "RM-51"
 	associated_paths = list(/obj/item/weapon/gun/rifle/standard_assaultrifle)
 	lore_text = "The RM-51 used to be the Marine Corps standard issue Rifle. It was known for it's rather heavy and large \
 	size but good accuracy at range. But it was eventually replaced by the T-18 because of it's relatively poor performance at close range situations.<br><br>\
@@ -258,6 +263,7 @@
 	rifle were made public to all gun manufacturers, and eventually the RM-51s design won out its competitors due to its ability to stay reliable in harsh conditions."
 
 /datum/codex_entry/standard_carbine
+	display_name = "ALF-4"
 	associated_paths = list(/obj/item/weapon/gun/rifle/standard_carbine)
 	lore_text = "The reason for the adoption of the ALF-4 carbine surfaced after repeated complaints of the unwieldiness of the T-12 \
 	Rifle surfaced inside tight spaces, this then prompted the higher command of the TGMC to decide to adopt a new rifle within new barrel \
@@ -267,6 +273,7 @@
 	With the designation T-18. Though the T-12 itself is still used widely due to availability."
 
 /datum/codex_entry/standard_lmg
+	display_name = "ALF-8"
 	associated_paths = list(/obj/item/weapon/gun/rifle/standard_lmg)
 	lore_text = "The ALF-8 LMG is pretty much an upsized version of the ALF-4 Carbine, the ALF-8 was created to put down heavy suppressive \
 	fire in a light and compact package. It was created when the ALF-8 package was seen to be unable to perform suppressive fire roles very \
@@ -275,16 +282,56 @@
 	The ALF-8 itself is based off the ALF-4’s design. The only major differences are a heavier and longer barrel created to have a \
 	large amount of rounds go threw it in short periods of time and different mag wells to accept bigger magazines than it’s little brother. \
 	It was eventually adopted and designated the T-42.<br><br>\
-	However these days it's been mostly replaced by the M56 smartgun system due to the M56s ability to use IFF and also self-load due to it’s \
-	autoloading systems. Removing the need of an assistant to carry the bulky ammo.<br><br>\
+	However these days it's been mostly replaced by the T-29 smartmachinegun due to the M56s ability to use IFF systems, and stabilize itself on the move. \
+	Improvements in caseless have removed the need of an assistant to carry the bulky ammo by increasing magazine and reducing drum size.<br><br>\
 	However, the T-42 is still used since it's much easier to use than the special training required for the smartgun system. These days it's \
-	usually used when IFF isn't needed such as high visibility environments and defensive positions."
+	usually used when IFF isn't needed such as high visibility environments and defensive positions. Or in a frontline support role."
 
-/datum/codex_entry/standard_smg
-	associated_paths = list(/obj/item/weapon/gun/smg/standard_smg)
+/datum/codex_entry/standard_machinepistol
+	display_name = "MD-65"
+	associated_paths = list(/obj/item/weapon/gun/smg/standard_machinepistol)
 	lore_text = "The MD-65 is a rather compact gun, designed for use by specialized troops who don't have the space to carry a bigger \
 	firearm and don't want to be stuck with a handgun. <br><br>\
 	It's generally used inside it's belt holster or slung on your back as a secondary firearm for use in situations where you have a \
 	larger gun and would prefer a more CQC able weapon. It also has a rather large magazine capacity due to the small caliber size and caseless ammunition. <br><br>\
 	The MD-65 was adopted as a program to allow specialized units like medics and engineers to carry a smaller firearm to maximize \
-	weight and storage capacity. However it slowly spread in popularity to light infantry and scout units. It was named T-90 upon adoption."
+	weight and storage capacity. However it slowly spread in popularity to light infantry and scout units. <br><br>\
+	It was named the T-19, upon adoption."
+
+/datum/codex_entry/standard_smg
+	display_name = "PDWS"
+	associated_paths = list(/obj/item/weapon/gun/smg/standard_smg)
+	lore_text = "The PDWS is a strange design made specifically for the specifications of the Corps, which put out a trial for a new submachinegun to replace the aging ones currently in service.<br><br>\
+	The general specifications was that the design be no logner than 24 inches, and much better ruggedness compared to the old SMG which had generally had unfavorable results by scouts and LI, who complained they wore down easily.\
+	The PDWS was designed to be compact, have a large magazine capacity due to it's strange bullpup-esque design, and be able to sustand hours in terrible conditions and 500 rounds without stoppages. <br><br>\
+	The PDWS was submitted to the trials on initial runs, and though the Brass and the troops found it to be incredibly awkward to handle and use at first, it beat out it's opponents in barrel length, compactness, general magazine size, and ruggedness.\
+	It was eventually accepted as the suprerior firearm, beating out the MR-25 and other popular subguns. <br><br>\
+	It was named the T-90, upon adoption."
+
+/datum/codex_entry/standard_smartmachinegun
+	display_name = "Krug"
+	associated_paths = list(/obj/item/weapon/gun/rifle/standard_smartmachinegun)
+	lore_text = "The tale of the T-29 SMMG starts with one single man, Brunning Kruger, who eventually ended up in Firearms Design after his conscription ended as a Firearms Tech in the Corps. \
+	He ended up interested in the idea of an IFF capable machine that was small enough to be internally put inside the gun, and identify friend from foe and pull of basically impossible shots at the same time\
+	he drew up some ideas and brought them foward, using already existant tech of IFF capable heavy weaponry, but nothing that was infantry sized, and his board looked as his ideas and thought he was basically crazy. <br><br>\
+	Kruger, not to be disturbed or moved by annoying board members, eventually went back home and started to work out how to make this thing work, and he took an ancient T-27 MMG that was lying around, and started to tinker with it. \
+	Eventually, years passed, and everytime he went home he would tinker with this idea in his head, and the gun in his desk and eventually one day something he realized where it'd be best to put it, inside the gun itself, he wanted a laser and a computer system tied in perfect harmony. <br><br>\
+	One day, the Corps announced something big, a new Machinegun trial for a new specialized and more portable machinegun to replace the aging T-27, and Kruger realized this could be his big chance. \
+	He brought his machinegun and it's design foward to the Board of people who were meeting to design a new machinegun for the trials, they once again looked at him, but this time something was different- <br><br>\
+	The Machinegun had an entirely new laser system, and a intergrated computer system, while it'd be difficult for the average person to use, a specialized operator could easily, with computer assistance, pull off impossible shots and manuvers, even while in the middle of friendlies.\
+	With this, he also added a laser that instantly recognized whether this was a friendly or enemy, and could help the computer adjust, and make impossible curvatures in bullets in notices, effectively creating the first IFF capable manheld gun, the only issue was that it was.. Heavy and difficult to handle.\
+	The Board reevaluated the gun and realized that Kruger was a genius, and put full resources into developing his design into perfection, weight was reduced, computer engineers were hired to fix his shitty code, the laser was perfected, and the machinegun was designed around it. <br>\
+	The Trial gun was dubbed the 'Krug', named after it's designer, and was submitted, it eventually ran into trials, and the Evaluators wondered at what the hell they were looking at. \
+	It was a Motion powered, mostly self aiming, IFF capable, rugged, reliable and basically impossible to miss with outside of user error, it was basically the perfect Machinegun in one. \
+	It frankly demolished it's opponents, and ended with two different machineguns adopted, due to the requirement of specialized training to use the KTLD system, as it was dubbed. <br><br>\
+	It was named the T-29 Smart Machinegun."
+
+
+/datum/codex_entry/obj/item/weapon/gun/rifle/standard_smartrifle
+	display_name = "T25"
+	associated_paths = list(/obj/item/weapon/gun/rifle/standard_smartrifle)
+	lore_text = "The T-25 is effecitvely a T-12 with an intergrated Smartweapon laser and computer, it requires the same specialized training to use as the T-42.\
+	 The T-25 started when the Corps wanted to look into a cheap and rifle sized package for quick use of a smart weapon.\
+	Eventually they took a T-12 and effectively added very little other than cutting off the carry handle, and adding a laser, computer and stabilzation system.\
+	The resulting product was tried out, and eventually decided that the idea was good as it was, cheap, decent, and easy to produce. It was adopted as is... <br><br>\
+	It was named the T-25."

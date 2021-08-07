@@ -47,6 +47,7 @@
 /obj/item/weapon/gun/rifle/standard_carbine
 	name = "\improper T-18 carbine"
 	desc = "The T-18 carbine is one of the standard rifles used by the TerraGov Marine Corps. It's commonly used by people who prefer greater mobility in combat, like scouts and other light infantry. Uses 10x24mm caseless ammunition."
+	general_codex_key = "ALF-8"
 	icon_state = "t18"
 	item_state = "t18"
 	fire_sound = "gun_t12"
@@ -111,6 +112,7 @@
 /obj/item/weapon/gun/rifle/standard_assaultrifle
 	name = "\improper T-12 assault rifle"
 	desc = "The T-12 assault rifle used to be the TerraGov Marine Corps standard issue rifle before the T-18 carbine replaced it. It is, however, still used widely despite that. The gun itself is very good at being used in most situations however it suffers in engagements at close quarters and is relatively hard to shoulder than some others. It uses 10x24mm caseless ammunition."
+	general_codex_key = "RM-51"
 	icon_state = "t12"
 	item_state = "t12"
 	fire_sound = "gun_t12"
@@ -587,6 +589,7 @@
 /obj/item/weapon/gun/rifle/standard_lmg
 	name = "\improper T-42 light machine gun"
 	desc = "The T-42 is the TGMC's current standard non-IFF-capable LMG. It's known for its ability to lay down heavy fire support very well. It is generally used when someone wants to hold a position or provide fire support. It uses 10x24mm ammunition."
+	general_codex_key = "ALF-8"
 	icon_state = "t42"
 	item_state = "t42"
 	caliber = CALIBER_10X24_CASELESS //codex
@@ -870,6 +873,7 @@
 /obj/item/weapon/gun/rifle/standard_smartmachinegun
 	name = "\improper T-29 smart machine gun"
 	desc = "The T-29 is the TGMC's current standard IFF-capable medium machine gun. It's known for its ability to lay down heavy fire support very well. It is generally used when someone wants to hold a position or provide fire support. Requires special training and it cannot turn off IFF. It uses 10x26mm ammunition."
+	general_codex_key = "Krug"
 	icon_state = "t29"
 	item_state = "t29"
 	caliber = CALIBER_10x26_CASELESS //codex
@@ -909,6 +913,7 @@
 /obj/item/weapon/gun/rifle/standard_smartrifle
 	name = "\improper T-25 smartrifle"
 	desc = "The T-25 is the TGMC's current standard IFF-capable  rifle. It's known for its ability to lay down quick fire support very well. Requires special training and it cannot turn off IFF. It uses 10x26mm ammunition."
+	general_codex_key = "T25"
 	icon = 'icons/Marine/gun64.dmi'
 	icon_state = "t25"
 	item_state = "t25"

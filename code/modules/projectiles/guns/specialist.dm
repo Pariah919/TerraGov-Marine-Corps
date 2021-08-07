@@ -12,12 +12,13 @@
 //Pow! Headshot
 
 /obj/item/weapon/gun/rifle/sniper/antimaterial
-	name = "\improper T-26 scoped rifle"
+	name = "\improper T-26 antimaterial rifle"
 	desc = "The T-26 is an IFF capable sniper rifle which is mostly used by long range marksmen. It excels in long-range combat situations and support sniping. It has a laser designator installed, and the scope itself has IFF integrated into it. Uses specialized 10x28 caseless rounds made to work with the guns odd IFF-scope system.  \nIt has an integrated Target Marker and a Laser Targeting system.\n\"Peace Through Superior Firepower\"."
 	icon = 'icons/Marine/gun64.dmi'
 	icon_state = "t26"
 	item_state = "t26"
 	max_shells = 15 //codex
+	general_codex_key = "MM42"
 	caliber = CALIBER_10X28
 	fire_sound = 'sound/weapons/guns/fire/sniper.ogg'
 	dry_fire_sound = 'sound/weapons/guns/fire/sniper_empty.ogg'
@@ -292,6 +293,7 @@
 /obj/item/weapon/gun/rifle/tx8
 	name = "\improper TX-8 scout rifle"
 	desc ="The TX-8 is a light specialized scout rifle, mostly used by light infantry and scouts. It's designed to be useable at all ranges by being very adaptable to different situations due to the ability to use different ammo types. Has IFF.  Takes specialized overpressured 10x28mm rounds."
+	general_codex_key = "Modell 8"
 	icon = 'icons/Marine/gun64.dmi'
 	icon_state = "tx8"
 	item_state = "tx8"
@@ -977,8 +979,9 @@
 //T-152 RPG
 
 /obj/item/weapon/gun/launcher/rocket/sadar
-	name = "\improper T-152 rocket launcher"
+	name = "\improper T-152 'SADAR' rocket launcher"
 	desc = "The T-152 is the primary anti-armor weapon of the TGMC. Used to take out light-tanks and enemy structures, the T-152 rocket launcher is a dangerous weapon with a variety of combat uses. Uses a variety of 84mm rockets."
+	general_codex_key = "SADAR"
 	icon_state = "m5"
 	item_state = "m5"
 	max_shells = 1 //codex
