@@ -3,8 +3,8 @@
 //FLAMETHROWER
 
 /obj/item/weapon/gun/flamer
-	name = "\improper M240A1 incinerator unit"
-	desc = "The M240A1 has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
+	name = "\improper T-82 incinerator unit"
+	desc = "The T-82 is the standard issue Flamethrower in the TGMC, generally a lighter package and more attachment options than other bretheren.. This is a weapon to be feared and respected as it is quite deadly."
 	icon_state = "m240"
 	item_state = "m240"
 	flags_equip_slot = ITEM_SLOT_BACK
@@ -14,7 +14,7 @@
 	dry_fire_sound = 'sound/weapons/guns/fire/flamethrower_empty.ogg'
 	unload_sound = 'sound/weapons/guns/interact/flamethrower_unload.ogg'
 	reload_sound = 'sound/weapons/guns/interact/flamethrower_reload.ogg'
-	aim_slowdown = 1.75
+	aim_slowdown = 1
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 	var/lit = 0 //Turn the flamer on/off
 	general_codex_key = "flame weapons"
@@ -22,12 +22,16 @@
 	attachable_allowed = list( //give it some flexibility.
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/motiondetector,
 						)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY|GUN_WIELDED_STABLE_FIRING_ONLY
 	gun_skill_category = GUN_SKILL_HEAVY_WEAPONS
-	attachable_offset = list("rail_x" = 12, "rail_y" = 23)
-	fire_delay = 4
+	attachable_offset = list("rail_x" = 12, "rail_y" = 23, "under_x" = 19, "under_y" = 14)
+	fire_delay = 4 // Flamer fire delay is decided on the ammo.
+	wield_delay = 0.75 SECONDS
 
 
 /obj/item/weapon/gun/flamer/Initialize()
@@ -424,10 +428,12 @@
 
 /obj/item/weapon/gun/flamer/marinestandard
 	name = "\improper TL-84 flamethrower"
-	desc = "The TL-84 flamethrower is the current standard issue flamethrower of the TGMC, and is used for area control and urban combat. Use unique action to use hydro cannon"
+	desc = "The TL-84 flamethrower is the current specialized issue flamethrower of the TGMC, and is used for area control and urban combat. Use unique action to use hydro cannon"
 	current_mag = /obj/item/ammo_magazine/flamer_tank/large
 	icon_state = "tl84"
 	item_state = "tl84"
+	aim_slowdown = 1.75
+	wield_delay = 0.9 SECONDS
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_WIELDED_STABLE_FIRING_ONLY
 	attachable_offset = list("rail_x" = 10, "rail_y" = 23, "stock_x" = 16, "stock_y" = 13)
 	starting_attachment_types = list(
