@@ -163,7 +163,7 @@
 			/obj/item/weapon/gun/rifle/pepperball = 4,
 			/obj/item/ammo_magazine/rifle/pepperball = 40,
 			/obj/item/storage/box/recoilless_system = 2,
-			/obj/item/weapon/gun/flamer = 3,
+			/obj/item/weapon/gun/flamer/marine = 3,
 			/obj/item/ammo_magazine/flamer_tank/backtank = 4,
 			/obj/item/ammo_magazine/flamer_tank = 20,
 			/obj/item/weapon/shield/riot/marine = 6,

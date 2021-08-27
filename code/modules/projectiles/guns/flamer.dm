@@ -3,8 +3,8 @@
 //FLAMETHROWER
 
 /obj/item/weapon/gun/flamer
-	name = "\improper T-82 incinerator unit"
-	desc = "The T-82 is the standard issue Flamethrower in the TGMC, generally a lighter package and more attachment options than other bretheren.. This is a weapon to be feared and respected as it is quite deadly."
+	name = "\improper M240 incinerator unit"
+	desc = "The M240 has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
 	icon_state = "m240"
 	item_state = "m240"
 	flags_equip_slot = ITEM_SLOT_BACK
@@ -425,6 +425,9 @@
 	else
 		return current_mag.current_rounds
 
+/obj/item/weapon/gun/flamer/marine
+	name = "\improper T-82 incinerator unit"
+	desc = "The T-82 is the standard issue Flamethrower in the TGMC, generally a lighter package and more attachment options than other bretheren. This is a weapon to be feared and respected as it is quite deadly."
 
 /obj/item/weapon/gun/flamer/marinestandard
 	name = "\improper TL-84 flamethrower"
