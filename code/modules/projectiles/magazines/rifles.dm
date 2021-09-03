@@ -356,3 +356,15 @@
 	reload_delay = 1 SECONDS
 	gun_type = /obj/item/weapon/gun/rifle/alf_machinecarbine
 	icon_state_mini = "mag_t42"
+
+//-------------------------------------------------------
+// MKH
+
+/obj/item/ammo_magazine/rifle/mkh
+	name = "\improper MKH-98 magazine (7.62x39mm)"
+	desc = "A 7.62x39mm magazine for the MKH-98."
+	caliber = CALIBER_762X39
+	icon_state = "mkh98"
+	default_ammo = /datum/ammo/bullet/rifle/mkh98
+	max_rounds = 26
+	gun_type = /obj/item/weapon/gun/rifle/ak47
