@@ -1310,11 +1310,12 @@
 	reload_sound = 'sound/weapons/guns/interact/ak47_reload.ogg'
 	cocked_sound = 'sound/weapons/guns/interact/ak47_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/mkh
-	aim_slowdown = 0.4
+	aim_slowdown = 0.45
 	type_of_casings = "cartridge"
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
+		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/suppressor,
@@ -1326,8 +1327,8 @@
 	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 17, "under_x" = 24, "under_y" = 13, "stock_x" = 0, "stock_y" = 12)
 
-	accuracy_mult = 1
+	accuracy_mult = 1.1
 	burst_amount = 1
-	fire_delay = 0.225 SECONDS
-	scatter = 0
+	fire_delay = 0.25 SECONDS
+	scatter = 2
 	wield_delay = 0.6 SECONDS
