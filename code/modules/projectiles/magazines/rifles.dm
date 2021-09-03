@@ -365,6 +365,6 @@
 	desc = "A 7.62x39mm magazine for the MKH-98."
 	caliber = CALIBER_762X39
 	icon_state = "mkh98"
-	default_ammo = /datum/ammo/bullet/rifle/mkh98
+	default_ammo = /datum/ammo/bullet/rifle/ak47
 	max_rounds = 26
-	gun_type = /obj/item/weapon/gun/rifle/ak47
+	gun_type = /obj/item/weapon/gun/rifle/mkh
