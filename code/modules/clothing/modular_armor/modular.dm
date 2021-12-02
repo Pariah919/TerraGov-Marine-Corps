@@ -269,14 +269,7 @@
 		/obj/item/armor_module/armor/badge,
 	)
 
-	icon_state_variants = list(
-		"drab",
-		"black",
-		"desert",
-		"snow",
-	)
-
-	current_variant = "black"
+	flags_item_map_variant = (ITEM_JUNGLE_VARIANT|ITEM_ICE_VARIANT|ITEM_PRISON_VARIANT)
 
 	allowed_uniform_type = /obj/item/clothing/under
 
@@ -499,7 +492,8 @@
 	icon_state = "infantry_helmet"
 	soft_armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 50, "rad" = 50, "fire" = 50, "acid" = 50)
 	accuracy_mod = 0
-	greyscale_config = /datum/greyscale_config/modularhelmet_infantry
+	greyscale_colors = null // We no longer use greyscale for marines, but it might be useful in the future.
+	greyscale_config = null
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head,
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
@@ -512,13 +506,13 @@
 		/obj/item/armor_module/armor/badge,
 	)
 
+	flags_item_map_variant = (ITEM_JUNGLE_VARIANT|ITEM_ICE_VARIANT|ITEM_PRISON_VARIANT)
 	starting_attachments = list(/obj/item/armor_module/armor/visor/marine, /obj/item/armor_module/storage/helmet)
 
 /obj/item/clothing/head/modular/marine/skirmisher
 	name = "Jaeger Pattern Skirmisher Helmet"
 	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Skirmisher markings."
 	icon_state = "skirmisher_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_skirmisher
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head,
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
@@ -537,7 +531,6 @@
 	name = "Jaeger Pattern Assault Helmet"
 	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Assault markings."
 	icon_state = "assault_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_assault
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head,
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
@@ -556,7 +549,6 @@
 	name = "Jaeger Pattern EVA Helmet"
 	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has EVA markings."
 	icon_state = "eva_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_eva
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head,
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
@@ -580,7 +572,6 @@
 	name = "Jaeger Pattern EOD Helmet"
 	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has EOD markings"
 	icon_state = "eod_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_eod
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head,
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
@@ -602,7 +593,6 @@
 	name = "Jaeger Pattern Scout Helmet"
 	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Scout markings"
 	icon_state = "scout_helmet"
-	greyscale_config = /datum/greyscale_config/modularhelmet_scout
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head,
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
@@ -621,8 +611,6 @@
 	name = "Jaeger Pattern Infantry-Open Helmet"
 	desc = "Usually paired with the Jaeger Combat Exoskeleton. Can mount utility functions on the helmet hard points. Has Infantry markings and no visor."
 	icon_state = "infantryopen_helmet"
-	greyscale_colors = "#5B6036"
-	greyscale_config = /datum/greyscale_config/modularhelmet_infantry_open
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head,
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
@@ -652,8 +640,7 @@
 		slot_l_hand_str = 'icons/mob/items_lefthand_1.dmi',
 		slot_r_hand_str = 'icons/mob/items_righthand_1.dmi',
 	)
-	greyscale_colors = null
-	greyscale_config = null
+
 	attachments_allowed = list(
 		/obj/item/armor_module/module/tyr_head,
 		/obj/item/armor_module/module/mimir_environment_protection/mimir_helmet,
@@ -667,13 +654,6 @@
 	starting_attachments = list(/obj/item/armor_module/storage/helmet)
 	visorless_offset_x = 0
 	visorless_offset_y = 0
-
-	icon_state_variants = list(
-		"green",
-		"black",
-		"brown",
-		"white",
-	)
 
 	current_variant = "black"
 
