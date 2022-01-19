@@ -700,6 +700,9 @@
 		/obj/item/lightreplacer,
 		/obj/item/circuitboard/general,
 		/obj/item/tool/solderingtool,
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/sheet/plasteel/small_stack,
+		/obj/item/stack/sheet/plasteel/small_stack,
 	)
 
 /obj/effect/essentials_set/leader
