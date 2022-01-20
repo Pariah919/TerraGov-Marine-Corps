@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	damage = 20
 	penetration = 5
 	accurate_range = 5
-	sundering = 1
+	sundering = 1.5
 
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
