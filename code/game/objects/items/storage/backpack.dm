@@ -776,4 +776,15 @@
 	storage_slots = 5 //It can hold 5 rockets.
 	max_storage_space = 21
 	max_w_class = 4
-	can_hold = list(/obj/item/ammo_magazine/rocket)
+	can_hold = list(/obj/item/ammo_magazine/rocket, /obj/item/weapon/gun/launcher/rocket/recoillessrifle)
+	bypass_w_limit = list(/obj/item/weapon/gun/launcher/rocket/recoillessrifle)
+	storage_type_limits = list(/obj/item/weapon/gun/launcher/rocket/recoillessrifle = 1)
+
+/obj/item/storage/backpack/rpg/update_icon_state()
+	var/has_gun = FALSE
+	for(var/obj/item/weapon/gun/launcher/rocket/recoillessrifle in contents)
+		if(!isgun(/obj/item/weapon/gun/launcher/rocket/recoillessrifle))
+			continue
+		has_gun = TRUE
+
+	icon_state = has_gun ? initial(icon_state) + "_full" : initial(icon_state)
