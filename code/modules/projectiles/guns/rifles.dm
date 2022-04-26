@@ -1056,6 +1056,59 @@
 	scatter = 0
 	scatter_unwielded = 15
 
+
+//-------------------------------------------------------
+//T-30 Self Loading Rifle
+
+/obj/item/weapon/gun/rifle/standard_smartslr
+	name = "\improper T-30 smart self loading rifle"
+	desc = "The TX-30 is the TGMC's current standard IFF-capable semiautomatic rifle, termed a 'Self Loading rifle'. It's known for its ability to lay down heavy fire support very well. It is generally used when someone wants to put down fire downrange accurately with no risk of friendly fire. Requires special training and it cannot turn off IFF. It uses 10x26mm ammunition."
+	icon = 'icons/Marine/gun64.dmi'
+	icon_state = "tx30"
+	item_state = "tx30"
+	caliber = CALIBER_10x26_CASELESS
+	max_shells = 25 //codex
+	force = 30
+	aim_slowdown = 0.65
+	wield_delay = 0.75 SECONDS
+	fire_sound = "gun_smartgun"
+	dry_fire_sound = 'sound/weapons/guns/fire/m41a_empty.ogg'
+	unload_sound = 'sound/weapons/guns/interact/T42_unload.ogg'
+	reload_sound = 'sound/weapons/guns/interact/T42_reload.ogg'
+	default_ammo_type = /obj/item/ammo_magazine/rifle/standard_smartslr
+	allowed_ammo_types = list(/obj/item/ammo_magazine/rifle/standard_smartslr)
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/motiondetector,
+		/obj/item/attachable/buildasentry,
+		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
+		/obj/item/attachable/stock/irremoveable/tx30,
+		/obj/item/attachable/shoulder_mount,
+	)
+
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_IFF
+	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
+	gun_skill_category = GUN_SKILL_SMARTGUN //Uses SG skill for the penalties.
+	starting_attachment_types = list(/obj/item/attachable/stock/irremoveable/tx30)
+	attachable_offset = list("muzzle_x" = 42, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 21, "under_x" = 24, "under_y" = 14, "stock_x" = 12, "stock_y" = 13)
+	fire_delay = 0.45 SECONDS
+	extra_delay = 0.15 SECONDS
+	burst_amount = 1
+	accuracy_mult = 1.2
+	damage_mult = 1.5
+	pen_addition = 10
+	scatter = -5
+	scatter_unwielded = 10
+
+	placed_overlay_iconstate = "smartgun"
+
 //-------------------------------------------------------
 //Sectoid Rifle
 

@@ -186,6 +186,7 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 			var/obj/item/weapon/gun/g = source
 			if(source) //Check for the source so we don't runtime if we have bonus projectiles from a non-gun source like a Spitter
 				new_proj.damage *= g.damage_mult //Bonus or reduced damage based on damage modifiers on the gun.
+				new_proj.damage += g.pen_addition //Bonus or reduced damage based on penetration modifiers on the gun.
 		else //If no bonus type is defined then the extra projectiles are the same as the main one.
 			new_proj.generate_bullet(src)
 		new_proj.accuracy = round(new_proj.accuracy * main_proj.accuracy/initial(main_proj.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.

@@ -249,19 +249,30 @@
 	icon_state_mini = "mag_t29"
 
 //-------------------------------------------------------
-//T-25 SMARTRIFLE
+//T-25 SMART LSW
 
 /obj/item/ammo_magazine/rifle/standard_smartrifle
 	name = "\improper T-25 magazine (10x26mm HP)"
-	desc = "A 10mm assault rifle magazine."
+	desc = "A 10mm light support weapon magazine."
 	caliber = CALIBER_10x26_CASELESS
 	icon_state = "t25"
 	w_class = WEIGHT_CLASS_NORMAL
 	default_ammo = /datum/ammo/bullet/smartmachinegun
-	max_rounds = 100
+	max_rounds = 120
 	icon_state_mini = "mag_rifle_big"
 
+//-------------------------------------------------------
+//T-25 SMART LSW
 
+/obj/item/ammo_magazine/rifle/standard_smartslr
+	name = "\improper TX-30 magazine (10x26mm HP)"
+	desc = "A 10mm rifle magazine."
+	caliber = CALIBER_10x26_CASELESS
+	icon_state = "tx30"
+	w_class = WEIGHT_CLASS_NORMAL
+	default_ammo = /datum/ammo/bullet/smartmachinegun
+	max_rounds = 25
+	icon_state_mini = "mag_rifle_big"
 
 //-------------------------------------------------------
 //Sectoid Rifle

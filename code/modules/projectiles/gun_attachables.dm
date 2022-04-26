@@ -1184,6 +1184,10 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	name = "TX-11 stock"
 	icon_state = "tx11stock"
 
+/obj/item/attachable/stock/irremoveable/tx30
+	name = "TX-30 stock"
+	icon_state = "tx30stock"
+
 
 
 //Underbarrel

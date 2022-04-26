@@ -182,6 +182,8 @@
 	var/damage_mult = 1
 	///Same as above, for damage bleed (falloff)
 	var/damage_falloff_mult = 1
+	///Adds penetration to the bullet fired, flat addition, not multiplied.
+	var/pen_addition = 0
 	///Screen shake when the weapon is fired while wielded.
 	var/recoil = 0
 	///Screen shake when the weapon is fired while unwielded.
