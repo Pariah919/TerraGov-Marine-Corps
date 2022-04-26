@@ -258,7 +258,7 @@
 	icon_state = "t25"
 	w_class = WEIGHT_CLASS_NORMAL
 	default_ammo = /datum/ammo/bullet/smartmachinegun
-	max_rounds = 120
+	max_rounds = 100
 	icon_state_mini = "mag_rifle_big"
 
 //-------------------------------------------------------
