@@ -97,7 +97,7 @@
 	desc = "Latest issue of the TGMC Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
 	force = 75
-	attack_speed = 12
+	attack_speed = 10
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/weapon/claymore/mercsword/machete/equipped(mob/user, slot)
