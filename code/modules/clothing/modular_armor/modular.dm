@@ -255,16 +255,23 @@
 		/obj/item/armor_module/armor/badge,
 	)
 
-	icon_state_variants = list(
-		"drab",
-		"black",
-		"desert",
-		"snow",
-	)
-
-	current_variant = "black"
-
 	allowed_uniform_type = /obj/item/clothing/under
+	flags_item_map_variant = ITEM_JUNGLE_VARIANT|ITEM_ICE_VARIANT|ITEM_PRISON_VARIANT
+
+/obj/item/clothing/suit/modular/xenonauten/update_item_sprites()
+	switch(SSmapping.configs[GROUND_MAP].armor_style)
+		if(MAP_ARMOR_STYLE_JUNGLE)
+			if(flags_item_map_variant & ITEM_JUNGLE_VARIANT)
+				icon_state = "m_[icon_state]"
+				item_state = "m_[item_state]"
+		if(MAP_ARMOR_STYLE_ICE)
+			if(flags_item_map_variant & ITEM_ICE_VARIANT)
+				icon_state = "s_[icon_state]"
+				item_state = "s_[item_state]"
+		if(MAP_ARMOR_STYLE_PRISON)
+			if(flags_item_map_variant & ITEM_PRISON_VARIANT)
+				icon_state = "k_[icon_state]"
+				item_state = "k_[item_state]"
 
 /obj/item/clothing/suit/modular/xenonauten/engineer
 	starting_attachments = list(/obj/item/armor_module/module/better_shoulder_lamp, /obj/item/armor_module/storage/engineering)
@@ -751,6 +758,7 @@
 		slot_l_hand_str = 'icons/mob/items_lefthand_1.dmi',
 		slot_r_hand_str = 'icons/mob/items_righthand_1.dmi',
 	)
+
 	greyscale_colors = null
 	greyscale_config = null
 	attachments_allowed = list(
@@ -769,14 +777,20 @@
 	visorless_offset_x = 0
 	visorless_offset_y = 0
 
-	icon_state_variants = list(
-		"green",
-		"black",
-		"brown",
-		"white",
-	)
-
-	current_variant = "black"
+/obj/item/clothing/head/modular/marine/m10x/update_item_sprites()
+	switch(SSmapping.configs[GROUND_MAP].armor_style)
+		if(MAP_ARMOR_STYLE_JUNGLE)
+			if(flags_item_map_variant & ITEM_JUNGLE_VARIANT)
+				icon_state = "m_[icon_state]"
+				item_state = "m_[item_state]"
+		if(MAP_ARMOR_STYLE_ICE)
+			if(flags_item_map_variant & ITEM_ICE_VARIANT)
+				icon_state = "s_[icon_state]"
+				item_state = "s_[item_state]"
+		if(MAP_ARMOR_STYLE_PRISON)
+			if(flags_item_map_variant & ITEM_PRISON_VARIANT)
+				icon_state = "k_[icon_state]"
+				item_state = "k_[item_state]"
 
 /obj/item/clothing/head/modular/marine/m10x/welding
 	starting_attachments = list(/obj/item/armor_module/storage/helmet, /obj/item/armor_module/module/welding)
