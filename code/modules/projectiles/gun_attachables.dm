@@ -857,6 +857,11 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	zoom_viewsize = 0
 	variants_by_parent_type = list(/obj/item/weapon/gun/rifle/som = "")
 
+/obj/item/attachable/scope/mini/mkh42
+	name = "MKH-42 mini rail scope"
+	icon_state = "mkh42scope"
+	desc = "A MKH-42 specific mounted zoom sight scope. Allows zoom by activating the attachment. Use F12 if your HUD doesn't come back."
+
 /obj/item/attachable/scope/mini/tx11
 	name = "AR-11 mini rail scope"
 	icon_state = "tx11scope"
@@ -1265,6 +1270,15 @@ inaccurate. Don't worry if force is ever negative, it won't runtime.
 	deploy_time = initial(deploy_time)
 	to_chat(source, span_warning("Losing support, the bipod retracts!"))
 	//playsound(source, 'sound/machines/click.ogg', 15, 1, 4)
+
+/obj/item/attachable/foldable/bipod/mkh42
+	name = "MKH-42 bipod"
+	icon_state = "mkh_bipod"
+	melee_mod = 0
+	flags_attach_features = ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+	accuracy_mod = 0.3
+	burst_scatter_mod = 0
 
 /obj/item/attachable/buildasentry
 	name = "\improper Build-A-Sentry Attachment System"
