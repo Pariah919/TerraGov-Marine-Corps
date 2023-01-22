@@ -324,6 +324,18 @@
 	icon_state_mini = "mag_rifle"
 
 //-------------------------------------------------------
+//MKH-42
+
+/obj/item/ammo_magazine/rifle/mkh42
+	name = "\improper MKH-42 pararifle magazine"
+	desc = "A magazine filled with 7.62X39 rifle rounds for the MKH-42."
+	caliber = CALIBER_762X39
+	icon_state = "mkh42"
+	default_ammo = /datum/ammo/bullet/rifle/heavy
+	max_rounds = 20
+	icon_state_mini = "mag_rifle"
+
+//-------------------------------------------------------
 //GL-54 and AR-55
 
 /obj/item/ammo_magazine/rifle/tx55

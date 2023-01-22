@@ -1522,6 +1522,47 @@
 	wield_delay = 0.5 SECONDS
 	movement_acc_penalty_mult = 4
 
+// MKH-42
+
+/obj/item/weapon/gun/rifle/mkh42
+	name = "\improper MKH-42 pararifle"
+	desc = "A certified classic, this battle rifle markets itself as the perfect 'Pararifle' managing to deliver high-caliber bullet at compact sizes for its class. High firerate, atrocious capactiy. Has an intregral bipod. This version of it chambers 7.62x39mm."
+	icon = 'icons/Marine/gun64.dmi'
+	fire_animation = "mkh42_fire"
+	icon_state = "mkh42"
+	item_state = "mkh42"
+	caliber = CALIBER_762X39 //codex
+	muzzleflash_iconstate = "muzzle_flash_medium"
+	max_shells = 20 //codex
+	fire_sound = 'sound/weapons/guns/fire/mkh42.ogg'
+	unload_sound = 'sound/weapons/guns/interact/ak47_unload.ogg'
+	reload_sound = 'sound/weapons/guns/interact/ak47_reload.ogg'
+	cocked_sound = 'sound/weapons/guns/interact/ak47_cocked.ogg'
+	default_ammo_type = /obj/item/ammo_magazine/rifle/mkh42
+	allowed_ammo_types = list(/obj/item/ammo_magazine/rifle/mkh42)
+	aim_slowdown = 0.55
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+//		/obj/item/attachable/foldable/bipod/mkh42,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonetknife,
+	)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 17, "under_x" = 24, "under_y" = 13, "stock_x" = 0, "stock_y" = 12)
+
+	accuracy_mult = 1.1
+	burst_amount = 1
+	fire_delay = 0.15 SECONDS
+	scatter = 1
+	wield_delay = 0.55 SECONDS
+	movement_acc_penalty_mult = 4
+
 //-------------------------------------------------------
 // GL-54 grenade launcher
 /obj/item/weapon/gun/rifle/tx54
