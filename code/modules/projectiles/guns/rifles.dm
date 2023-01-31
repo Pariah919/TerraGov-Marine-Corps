@@ -1830,3 +1830,68 @@
 
 /obj/item/weapon/gun/rifle/som_mg/standard
 	starting_attachment_types = list(/obj/item/attachable/stock/som_mg_stock, /obj/item/attachable/foldable/bipod, /obj/item/attachable/reddot, /obj/item/attachable/extended_barrel)
+
+//-------------------------------------------------------
+//L-4011 Rifle
+
+/obj/item/weapon/gun/rifle/icc_sr
+	name = "\improper L-1K3 'Centurion' confrontation rifle"
+	desc = "The Centurion is a tried and true design used by ICC Personnel, having a great performance in burst fire allowing it to engage most targets with good results, however it suffers in the full auto department when compared to peers in its class. It uses 10x25mm caseless ammunition."
+	icon = 'icons/Marine/gun64.dmi'
+	icon_state = "l1k3"
+	item_state = "l1k3"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items_lefthand_64.dmi',
+		slot_r_hand_str = 'icons/mob/items_righthand_64.dmi',
+	)
+
+	inhand_x_dimension = 64
+	inhand_y_dimension = 32
+	fire_sound = 'sound/weapons/guns/fire/t21.ogg'
+	dry_fire_sound = 'sound/weapons/guns/fire/t21_empty.ogg'
+	unload_sound = 'sound/weapons/guns/interact/t21_unload.ogg'
+	reload_sound = 'sound/weapons/guns/interact/t21_reload.ogg'
+	caliber = CALIBER_10X25_CASELESS //codex
+	max_shells = 35 //codex
+	force = 20
+	default_ammo_type = /obj/item/ammo_magazine/rifle/standard_skirmishrifle
+	allowed_ammo_types = list(/obj/item/ammo_magazine/rifle/standard_skirmishrifle)
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/foldable/bipod,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonetknife,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/flashlight/under,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/angledgrip,
+		/obj/item/weapon/gun/shotgun/combat/masterkey,
+		/obj/item/weapon/gun/flamer/mini_flamer,
+		/obj/item/weapon/gun/grenade_launcher/underslung,
+		/obj/item/attachable/motiondetector,
+	)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC, GUN_FIREMODE_BURSTFIRE, GUN_FIREMODE_AUTOBURST)
+	attachable_offset = list("muzzle_x" = 46, "muzzle_y" = 16,"rail_x" = 18, "rail_y" = 19, "under_x" = 34, "under_y" = 13, "stock_x" = 0, "stock_y" = 13)
+	actions_types = list(/datum/action/item_action/aim_mode)
+	aim_fire_delay = 0.15 SECONDS
+	aim_speed_modifier = 2.5
+
+	fire_delay = 0.3 SECONDS
+	burst_amount = 4
+	burst_delay = 0.15 SECONDS
+	extra_delay = 0.1 SECONDS
+	accuracy_mult = 1.2
+	scatter = 0
+	wield_delay = 0.6 SECONDS
+	aim_slowdown = 0.6

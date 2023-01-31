@@ -405,3 +405,14 @@
 	max_rounds = 200
 	reload_delay = 3 SECONDS
 	icon_state_mini = "mag_gpmg"
+
+//-------------------------------------------------------
+//L-1K3
+/obj/item/ammo_magazine/rifle/standard_skirmishrifle
+	name = "\improper L-1K3 confrontation rifle magazine"
+	desc = "A magazine filled with 10x25mm rifle rounds for the L-1K3."
+	caliber = CALIBER_10X25_CASELESS
+	icon_state = "l1k3"
+	default_ammo = /datum/ammo/bullet/rifle/heavy
+	max_rounds = 35
+	icon_state_mini = "mag_rifle"

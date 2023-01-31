@@ -3319,11 +3319,42 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 		var/mob/living/carbon/xenomorph/X = victim
 		X.use_plasma(drain_multiplier * X.xeno_caste.plasma_max * X.xeno_caste.plasma_regen_limit)
 		X.use_plasma(plasma_drain)
+		to_chat(world, "plasma drained by projectile")
 
 /datum/ammo/bullet/pepperball/pepperball_mini
 	damage = 40
 	drain_multiplier = 0.03
 	plasma_drain = 15
+
+/datum/ammo/bullet/pepperball/tfoot
+	name = "pepperball"
+	drain_multiplier = 0.05
+	plasma_drain = 20
+	var/datum/effect_system/smoke_spread/smoke_system
+	var/danger_message = "<span class='danger'>The pepperball explodes with a splat and explodes into purple gas!</span>"
+
+/datum/ammo/bullet/pepperball/tfoot/on_hit_mob(mob/living/victim, obj/projectile/proj)
+	. = ..()
+	drop_nade(get_turf(proj), proj.firer)
+
+/datum/ammo/bullet/pepperball/tfoot/on_hit_obj(obj/O, obj/projectile/P)
+	drop_nade(get_turf(P), P.firer)
+
+/datum/ammo/bullet/pepperball/tfoot/on_hit_turf(turf/T, obj/projectile/P)
+	var/target = (T.density && isturf(P.loc)) ? P.loc : T
+	drop_nade(target, P.firer) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+
+/datum/ammo/bullet/pepperball/tfoot/do_at_max_range(obj/projectile/P)
+	drop_nade(get_turf(P), P.firer)
+
+/datum/ammo/bullet/pepperball/tfoot/set_smoke()
+	smoke_system = new /datum/effect_system/smoke_spread/plasmaloss()
+
+/datum/ammo/bullet/pepperball/tfoot/drop_nade(turf/T, atom/firer, range = 1)
+	set_smoke()
+	smoke_system.set_up(range, T)
+	smoke_system.start()
+	T.visible_message(danger_message)
 
 /datum/ammo/alloy_spike
 	name = "alloy spike"

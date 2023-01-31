@@ -313,6 +313,67 @@
 		/obj/item/attachable/magnetic_harness,
 	)
 
+//-------------------------------------------------------
+//PUMP SHOTGUN
+//Shotguns in this category will need to be pumped each shot.
+
+/obj/item/weapon/gun/shotgun/pump/icc
+	name = "\improper L-101 'Scorpion' trenchgun"
+	desc = "A classic in the ICC arsenal, termed a 'Trenchgun' from outdated use of slang by most users. The Scorpion is a close range monster with slamfire capablitity and will shred targets at close range enviroments such as a spaceships interior.\n<b>Requires a pump, which is the Unique Action key.</b>"
+	icon = 'icons/Marine/gun64.dmi'
+	flags_equip_slot = ITEM_SLOT_BACK
+	icon_state = "trenchgun"
+	item_state = "v10"
+	default_ammo_type = /datum/ammo/bullet/shotgun/buckshot
+	fire_sound = 'sound/weapons/guns/fire/shotgun_cmb.ogg'
+	reload_sound = 'sound/weapons/guns/interact/shotgun_cmb_insert.ogg'
+	cocked_sound = 'sound/weapons/guns/interact/shotgun_cmb_pump.ogg'
+	max_chamber_items = 8
+	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC, GUN_FIREMODE_AUTOBURST) //full auto, fuller auto
+	cock_delay = 1 SECONDS
+
+	attachable_allowed = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonetknife,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/magnetic_harness,
+	)
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
+	reciever_flags = AMMO_RECIEVER_HANDFULS|AMMO_RECIEVER_REQUIRES_UNIQUE_ACTION|AMMO_RECIEVER_UNIQUE_ACTION_LOCKS
+	cocked_message = "You rack the pump."
+	cock_locked_message = "The pump is locked! Fire it first!"
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 10, "rail_y" = 21, "under_x" = 20, "under_y" = 14, "stock_x" = 20, "stock_y" = 14)
+
+	fire_delay = 1.5 SECONDS
+	accuracy_mult = 1.25
+	accuracy_mult_unwielded = 1
+	scatter_unwielded = 10
+
+	burst_amount = 1
+	burst_delay = 0.1 SECONDS
+	extra_delay = 0.1 SECONDS
+	autoburst_delay = 0.1 SECONDS //this makes it fuller auto
+	burst_accuracy_mult = 0.6
+	burst_scatter_mult = 20
+
+	recoil = 0 // It has a stock. It's on the sprite.
+	recoil_unwielded = 0
+
+/obj/item/weapon/gun/shotgun/pump/icc/sl
+	starting_attachment_types = list(
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/angledgrip,
+	)
+
 //------------------------------------------------------
 //A hacky bolt action rifle. in here for the "pump" or bolt working action.
 
