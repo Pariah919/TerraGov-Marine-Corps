@@ -169,6 +169,13 @@
 	desc = "The perfect white jacket to go with your white dress uniform."
 	icon_state = "white_dress_jacket" //with thanks to Baystation12
 	item_state = "white_dress_jacket" //with thanks to Baystation12
+	allowed = list (
+		/obj/item/weapon/combat_knife,
+		/obj/item/attachable/bayonetknife,
+		/obj/item/instrument,
+		/obj/item/storage/holster/blade
+	)
+
 
 
 /obj/item/clothing/suit/straight_jacket
