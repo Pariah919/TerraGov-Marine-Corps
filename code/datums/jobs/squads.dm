@@ -140,6 +140,84 @@
 		SOM_SQUAD_LEADER = 1,
 )
 
+//ICC Squads, based off French Terms
+/datum/squad/anatole
+	name = "Anatole"
+	id = ANATOLE_SQUAD
+	color = "#13848c"
+	access = list(ACCESS_MARINE_ALPHA)
+	radio_freq = FREQ_ANATOLE
+	faction = FACTION_ICC
+	current_positions = list(
+		ICC_SQUAD_MARINE = 0,
+		ICC_SQUAD_VETERAN = 0,
+		ICC_SQUAD_CORPSMAN = 0,
+		ICC_SQUAD_ENGINEER = 0,
+		ICC_SQUAD_LEADER = 0,
+)
+	max_positions = list(
+		ICC_SQUAD_MARINE = -1,
+		ICC_SQUAD_LEADER = 1,
+)
+
+/datum/squad/berthe
+	name = "Berthe"
+	id = BERTHE_SQUAD
+	color = "#2fb90d"
+	access = list(ACCESS_MARINE_ALPHA)
+	radio_freq = FREQ_BERTHE
+	faction = FACTION_ICC
+	current_positions = list(
+		ICC_SQUAD_MARINE = 0,
+		ICC_SQUAD_VETERAN = 0,
+		ICC_SQUAD_CORPSMAN = 0,
+		ICC_SQUAD_ENGINEER = 0,
+		ICC_SQUAD_LEADER = 0,
+)
+	max_positions = list(
+		ICC_SQUAD_MARINE = -1,
+		ICC_SQUAD_LEADER = 1,
+)
+
+/datum/squad/celestin
+	name = "Celestin"
+	id = CELESTIN_SQUAD
+	color = "#c70cbe"
+	access = list(ACCESS_MARINE_ALPHA)
+	radio_freq = FREQ_CELESTIN
+	faction = FACTION_ICC
+	current_positions = list(
+		ICC_SQUAD_MARINE = 0,
+		ICC_SQUAD_VETERAN = 0,
+		ICC_SQUAD_CORPSMAN = 0,
+		ICC_SQUAD_ENGINEER = 0,
+		ICC_SQUAD_LEADER = 0,
+)
+	max_positions = list(
+		ICC_SQUAD_MARINE = -1,
+		ICC_SQUAD_LEADER = 1,
+)
+
+/datum/squad/dedier
+	name = "Dedier"
+	id = DEDIER_SQUAD
+	color = "#cb0c0c"
+	access = list(ACCESS_MARINE_ALPHA)
+	radio_freq = FREQ_DEDIER
+	faction = FACTION_ICC
+	current_positions = list(
+		ICC_SQUAD_MARINE = 0,
+		ICC_SQUAD_VETERAN = 0,
+		ICC_SQUAD_CORPSMAN = 0,
+		ICC_SQUAD_ENGINEER = 0,
+		ICC_SQUAD_LEADER = 0,
+)
+	max_positions = list(
+		ICC_SQUAD_MARINE = -1,
+		ICC_SQUAD_LEADER = 1,
+)
+
+
 /datum/squad/New(set_color, set_name)
 	if(set_color)
 		color = set_color

@@ -6,367 +6,82 @@
 	faction = FACTION_ICC
 	minimap_icon = "icc"
 
-//ICC Standard
-/datum/job/icc/standard
-	title = "ICC Standard"
-	paygrade = "ICCH"
-	multiple_outfits = TRUE
-	outfit = /datum/outfit/job/icc/standard/mpi_km
-	outfits = list(
-		/datum/outfit/job/icc/standard/mpi_km,
-		/datum/outfit/job/icc/standard/icc_pdw,
-		/datum/outfit/job/icc/standard/icc_battlecarbine,
-		/datum/outfit/job/icc/standard/icc_assaultcarbine,
-	)
+//Base job for normal gameplay ICC, not ERT.
+/datum/job/icc/squad
+	access = ALL_ANTAGONIST_ACCESS
+	minimal_access = ALL_ANTAGONIST_ACCESS
+	supervisors = "the acting squad leader"
+	selection_color = "#ffeeee"
+	exp_type_department = EXP_TYPE_MARINES
 
-/datum/outfit/job/icc
+/datum/job/icc/squad/after_spawn(mob/living/carbon/C, mob/M, latejoin = FALSE)
+	. = ..()
+	C.hud_set_job(faction)
+	if(!ishuman(C))
+		return
+	var/mob/living/carbon/human/human_spawn = C
+	if(!(human_spawn.species.species_flags & ROBOTIC_LIMBS))
+		human_spawn.set_nutrition(250)
+	if(!human_spawn.assigned_squad)
+		CRASH("after_spawn called for a marine without an assigned_squad")
+	to_chat(M, {"\nYou have been assigned to: <b><font size=3 color=[human_spawn.assigned_squad.color]>[lowertext(human_spawn.assigned_squad.name)] squad</font></b>.
+Make your way to the cafeteria for some post-cryosleep chow, and then get equipped in your squad's prep room."})
+
+/datum/job/icc/squad/equip_spawning_squad(mob/living/carbon/human/new_character, datum/squad/assigned_squad, client/player)
+	if(!assigned_squad)
+		SSjob.JobDebug("Failed to put marine role in squad. Player: [player.key] Job: [title]")
+		return
+	assigned_squad.insert_into_squad(new_character)
+
+// Guardsman
+/datum/job/icc/squad/standard
+	title = ICC_SQUAD_MARINE
+	paygrade = "ICC_E1"
+	comm_title = "Gdr"
+	access = list(ACCESS_MARINE_PREP)
+	minimal_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DROPSHIP)
+	display_order = JOB_DISPLAY_ORDER_SQUAD_MARINE
+	outfit = /datum/outfit/job/icc/squad/standard
+	total_positions = -1
+	job_flags = JOB_FLAG_LATEJOINABLE|JOB_FLAG_ROUNDSTARTJOINABLE|JOB_FLAG_ALLOWS_PREFS_GEAR|JOB_FLAG_PROVIDES_BANK_ACCOUNT|JOB_FLAG_ADDTOMANIFEST|JOB_FLAG_PROVIDES_SQUAD_HUD|JOB_FLAG_CAN_SEE_ORDERS
+	jobworth = list(
+//		/datum/job/xenomorph = LARVA_POINTS_REGULAR,
+//		/datum/job/terragov/icc/corpsman = SMARTIE_POINTS_REGULAR,
+//		/datum/job/terragov/icc/engineer = SMARTIE_POINTS_REGULAR,
+	)
+	html_description = {"
+		<b>Difficulty</b>: Easy<br /><br />
+		<b>You answer to the</b> acting Squad Leader<br /><br />
+		<b>Unlock Requirement</b>: Starting Role<br /><br />
+		<b>Gamemode Availability</b>: Breach <br /><br /><br />
+		ICCGF Guardsmen make up the bread and butter of the coaltions fighting forces. They are fitted with the standard arsenal that the ICC offers, and they can take up a variety of roles, being a sniper, a pyrotechnician, a machinegunner, rifleman and more. They’re often high in numbers and divided into squads, but they’re the lowest ranking individuals, with a low degree of skill in anything but shooting and engineering, being rather poor at medical roles. Still, they are not limited to the arsenal they can take on the field to deal whatever threat that lurks against the coalition.
+		<br /><br />
+		<b>Duty</b>: Carry out orders made by your acting Squad Leader, deal with any threats that oppose the coalition.
+	"}
+	minimap_icon = "private"
+
+/datum/job/terragov/squad/standard/after_spawn(mob/living/carbon/new_mob, mob/user, latejoin = FALSE)
+	. = ..()
+	if(!ishuman(new_mob))
+		return
+	var/mob/living/carbon/human/new_human = new_mob
+	var/playtime_mins = user?.client?.get_exp(title)
+	if(!playtime_mins || playtime_mins < 1 )
+		return
+	switch(playtime_mins)
+		if(0 to 600) // starting
+			new_human.wear_id.paygrade = "ICC_E1"
+		if(601 to 6000) // 10hrs
+			new_human.wear_id.paygrade = "ICC_E2"
+		if(6001 to 18000) // 100 hrs
+			new_human.wear_id.paygrade = "ICC_E3"
+		if(18001 to 60000) // 300 hrs
+			new_human.wear_id.paygrade = "ICC_E3E"
+		if(60001 to INFINITY) // 1000 hrs
+			new_human.wear_id.paygrade = "ICC_E8"
+
+/datum/outfit/job/icc/squad/standard
 	name = "ICC Standard"
-	jobtype = /datum/job/icc
+	jobtype = /datum/job/icc/squad/standard
 
-	id = /obj/item/card/id/silver
-	w_uniform = /obj/item/clothing/under/icc/webbing
-	belt = /obj/item/storage/belt/marine/icc
-	ears = /obj/item/radio/headset/distress/icc
-	w_uniform = /obj/item/clothing/under/icc/webbing
-	shoes = /obj/item/clothing/shoes/marine/icc/knife
-	wear_suit = /obj/item/clothing/suit/storage/marine/icc
-	gloves = /obj/item/clothing/gloves/marine/icc
-	head = /obj/item/clothing/head/helmet/marine/icc
-	mask = /obj/item/clothing/mask/gas/icc
-
-// Basic standard equipment
-/datum/outfit/job/icc/standard
-	name = "ICC Standard"
-	jobtype = /datum/job/icc
-
-	id = /obj/item/card/id/silver
-	gloves = /obj/item/clothing/gloves/marine/icc/insulated
-	r_store = /obj/item/storage/pouch/pistol/icc
-	l_store = /obj/item/storage/pouch/medical_injectors/icc/firstaid
-	back = /obj/item/storage/backpack/lightpack/icc
-
-
-/datum/outfit/job/icc/standard/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/snacks/wrapped/barcardine, SLOT_IN_SUIT)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/snacks/wrapped/barcardine, SLOT_IN_SUIT)
-
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/icc_dpistol, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/icc_dpistol, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/icc_dpistol, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/screwdriver, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/wrench, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, SLOT_IN_BACKPACK)
-
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/icc_dpistol, SLOT_IN_R_POUCH)
-
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-
-/datum/outfit/job/icc/standard/mpi_km
-	suit_store = /obj/item/weapon/gun/rifle/mpi_km/standard
-
-/datum/outfit/job/icc/standard/mpi_km/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mpi_km/black, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mpi_km/black, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mpi_km/black, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mpi_km/black, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mpi_km/black, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mpi_km/black, SLOT_IN_BELT)
-
-/datum/outfit/job/icc/standard/icc_pdw
-	suit_store = /obj/item/weapon/gun/smg/icc_pdw/standard
-
-/datum/outfit/job/icc/standard/icc_pdw/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_pdw, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_pdw, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_pdw, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_pdw, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_pdw, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_pdw, SLOT_IN_BELT)
-
-/datum/outfit/job/icc/standard/icc_battlecarbine
-	suit_store = /obj/item/weapon/gun/rifle/icc_battlecarbine/standard
-
-/datum/outfit/job/icc/standard/icc_battlecarbine/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_battlecarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_battlecarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_battlecarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_battlecarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_battlecarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_battlecarbine, SLOT_IN_BELT)
-
-/datum/outfit/job/icc/standard/icc_assaultcarbine
-	suit_store = /obj/item/weapon/gun/rifle/icc_assaultcarbine
-
-/datum/outfit/job/icc/standard/icc_assaultcarbine/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_assaultcarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_assaultcarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_assaultcarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_assaultcarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_assaultcarbine, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_assaultcarbine, SLOT_IN_BELT)
-
-//ICC Guard
-/datum/job/icc/guard
-	title = "ICC Guardsman"
-	paygrade = "ICC3"
-	outfit = /datum/outfit/job/icc/guard/coilgun
-	multiple_outfits = TRUE
-	outfits = list(
-		/datum/outfit/job/icc/guard/coilgun,
-		/datum/outfit/job/icc/guard/icc_autoshotgun,
-		/datum/outfit/job/icc/guard/icc_bagmg,
-	)
-
-/datum/outfit/job/icc/guard
-	name = "ICC Guard"
-	jobtype = /datum/job/icc/guard
-
-	shoes = /obj/item/clothing/shoes/marine/icc/guard/knife
-	wear_suit = /obj/item/clothing/suit/storage/marine/icc/guard
-	gloves = /obj/item/clothing/gloves/marine/icc/guard
-	head = /obj/item/clothing/head/helmet/marine/icc/guard
-
-
-/datum/outfit/job/icc/guard/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/snacks/wrapped/barcardine, SLOT_IN_SUIT)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/snacks/wrapped/barcardine, SLOT_IN_SUIT)
-
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, SLOT_IN_BACKPACK)
-
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/russian_red, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/synaptizine, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/tricordrazine, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/tricordrazine, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/autoinjector/tramadol, SLOT_IN_ACCESSORY)
-
-
-/datum/outfit/job/icc/guard/coilgun
-	suit_store = /obj/item/weapon/gun/launcher/rocket/icc
-	back = /obj/item/weapon/gun/rifle/icc_coilgun
-	l_store = /obj/item/storage/pouch/explosive/icc
-	r_store = /obj/item/storage/pouch/explosive/icc
-
-/datum/outfit/job/icc/guard/coilgun/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/icc, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/icc, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/icc, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/icc, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/icc/thermobaric, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/icc/thermobaric, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/icc/heat, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/icc/heat, SLOT_IN_L_POUCH)
-
-
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-
-/datum/outfit/job/icc/guard/icc_autoshotgun
-	suit_store = /obj/item/weapon/gun/rifle/icc_coilgun
-	back = /obj/item/weapon/gun/rifle/icc_autoshotgun/guard
-	l_store = /obj/item/storage/pouch/magazine/large/icc
-	r_store = /obj/item/storage/pouch/magazine/large/icc
-
-/datum/outfit/job/icc/guard/icc_autoshotgun/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_BELT)
-
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_autoshotgun, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_autoshotgun, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_autoshotgun, SLOT_IN_R_POUCH)
-
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_autoshotgun/frag, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_autoshotgun/frag, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_autoshotgun/frag, SLOT_IN_L_POUCH)
-
-/datum/outfit/job/icc/guard/icc_bagmg
-	wear_suit = /obj/item/clothing/suit/storage/marine/icc/guard/heavy
-	head = /obj/item/clothing/head/helmet/marine/icc/guard/heavy
-	suit_store = /obj/item/weapon/gun/rifle/icc_coilgun
-	back = /obj/item/storage/holster/icc_mg/full
-	belt = /obj/item/ammo_magazine/icc_mg/belt
-	l_store = /obj/item/storage/pouch/magazine/large/icc
-	r_store = /obj/item/storage/pouch/magazine/large/icc
-
-/datum/outfit/job/icc/guard/icc_bagmg/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_coilgun, SLOT_IN_R_POUCH)
-
-
-//ICC Medic
-/datum/job/icc/medic
-	title = "ICC Medic"
-	paygrade = "ICC2"
-	skills_type = /datum/skills/combat_medic/crafty
-	multiple_outfits = TRUE
-	outfit = /datum/outfit/job/icc/medic/icc_machinepistol
-	outfits = list(
-		/datum/outfit/job/icc/medic/icc_machinepistol,
-		/datum/outfit/job/icc/medic/icc_sharpshooter,
-	)
-
-/datum/outfit/job/icc/medic
-	name = "ICC Medic"
-	jobtype = /datum/job/icc/medic
-
-	id = /obj/item/card/id/silver
-	gloves = /obj/item/clothing/gloves/marine/icc
-	back = /obj/item/storage/backpack/lightpack/icc
-	belt = /obj/item/storage/belt/lifesaver/icc/ert
-	glasses = /obj/item/clothing/glasses/hud/health
-
-/datum/outfit/job/icc/medic/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/snacks/wrapped/barcardine, SLOT_IN_SUIT)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/snacks/wrapped/barcardine, SLOT_IN_SUIT)
-
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/defibrillator, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, SLOT_IN_BACKPACK)
-
-	H.equip_to_slot_or_del(new /obj/item/roller, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/tweezers, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/spaceacillin, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/advanced/nanoblood, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/bodybag/cryobag, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/hypospray/advanced/combat_advanced, SLOT_IN_ACCESSORY)
-
-/datum/outfit/job/icc/medic/icc_machinepistol
-	suit_store = /obj/item/weapon/gun/smg/icc_machinepistol/medic
-	l_store = /obj/item/storage/pouch/magazine/large/icc
-	r_store = /obj/item/storage/pouch/magazine/large/icc
-
-/datum/outfit/job/icc/medic/icc_machinepistol/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol, SLOT_IN_R_POUCH)
-
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol/hp, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol/hp, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol/hp, SLOT_IN_L_POUCH)
-
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/icc_machinepistol, SLOT_IN_BACKPACK)
-
-/datum/outfit/job/icc/medic/icc_sharpshooter
-	suit_store = /obj/item/weapon/gun/rifle/icc_sharpshooter/medic
-	l_store = /obj/item/storage/pouch/magazine/large/icc
-	r_store = /obj/item/storage/pouch/magazine/large/icc
-
-/datum/outfit/job/icc/medic/icc_sharpshooter/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_sharpshooter, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_sharpshooter, SLOT_IN_R_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_sharpshooter, SLOT_IN_R_POUCH)
-
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_sharpshooter, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_sharpshooter, SLOT_IN_L_POUCH)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_sharpshooter, SLOT_IN_L_POUCH)
-
-/datum/job/icc/leader
-	title = "ICC Leader"
-	paygrade = "ICC2"
-	outfit = /datum/outfit/job/icc/leader/trenchgun
-	skills_type = /datum/skills/sl/icc
-	multiple_outfits = TRUE
-	outfits = list(
-		/datum/outfit/job/icc/leader/trenchgun,
-		/datum/outfit/job/icc/leader/icc_confrontationrifle,
-	)
-
-
-/datum/outfit/job/icc/leader
-	name = "ICC Leader"
-	jobtype = /datum/job/icc/leader
-
-	shoes = /obj/item/clothing/shoes/marine/icc/knife
-	wear_suit = /obj/item/clothing/suit/storage/marine/icc/guard
-	gloves = /obj/item/clothing/gloves/marine/icc/guard
-	head = /obj/item/clothing/head/helmet/marine/icc/guard
-	back = /obj/item/storage/backpack/lightpack/icc/guard
-	l_store = /obj/item/storage/pouch/medical_injectors/icc/firstaid
-	r_store = /obj/item/storage/pouch/construction/icc/full
-
-
-/datum/outfit/job/icc/leader/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/snacks/wrapped/barcardine, SLOT_IN_SUIT)
-	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/snacks/wrapped/barcardine, SLOT_IN_SUIT)
-
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/som, SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, SLOT_IN_BACKPACK)
-
-	H.equip_to_slot_or_del(new /obj/item/binoculars/tactical/range, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_ACCESSORY)
-
-/datum/outfit/job/icc/leader/trenchgun
-	suit_store = /obj/item/weapon/gun/shotgun/pump/trenchgun/icc_leader
-	belt = /obj/item/storage/belt/shotgun/icc/mixed
-
-/datum/outfit/job/icc/leader/icc_confrontationrifle
-	belt = /obj/item/storage/belt/marine/icc
-	suit_store = /obj/item/weapon/gun/rifle/icc_confrontationrifle/leader
-
-/datum/outfit/job/icc/leader/icc_confrontationrifle/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_confrontationrifle, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_confrontationrifle, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_confrontationrifle, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_confrontationrifle, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_confrontationrifle, SLOT_IN_BELT)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/icc_confrontationrifle, SLOT_IN_BELT)
+	id = /obj/item/card/id/dogtag/som

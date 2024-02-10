@@ -88,6 +88,15 @@
 #define SOM_SQUAD_VETERAN "SOM Squad Veteran"
 #define SOM_SQUAD_MARINE "SOM Squad Standard"
 
+// ICC
+#define ICC_FIELD_MARSHAL "ICC Field Marshal"
+#define ICC_CHIEF_MEDICAL_OFFICER "ICC Chief Hospitalier"
+
+#define ICC_SQUAD_LEADER "ICC Squad Leader"
+#define ICC_SQUAD_CORPSMAN "ICC Squad Medic"
+#define ICC_SQUAD_ENGINEER "ICC Squad Sapper"
+#define ICC_SQUAD_MARINE "ICC Squad Guardsman"
+
 #define JOB_CAT_COMMAND "Command"
 #define JOB_CAT_SILICON "Silicon"
 #define JOB_CAT_REQUISITIONS "Requisitions"

@@ -387,6 +387,8 @@
 			. = size ? "VADM" : "SOM Vice-Admiral"
 		if("SOM_A4")
 			. = size ? "ADM" : "SOM Admiral"
+		if("ICC_E1")
+			. = size ? "SDT" : "Soldat"
 		if("ICC1")
 			. = size ? "ICC" : "ICC Standard"
 		if("ICC2")
