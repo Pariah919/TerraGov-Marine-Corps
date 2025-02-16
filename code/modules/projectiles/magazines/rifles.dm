@@ -326,7 +326,28 @@
 	icon_state = "sg62"
 	w_class = WEIGHT_CLASS_NORMAL
 	default_ammo = /datum/ammo/bullet/smarttargetrifle
+	max_rounds = 30
+	icon_state_mini = "mag_sg29"
+
+/obj/item/ammo_magazine/rifle/standard_smarttargetrifle
+	name = "\improper SG-62 magazine (10x27mm HV P+)"
+	desc = "A magazine filled with 10x27mm specialized high pressure smart rounds."
+	caliber = CALIBER_10x27_CASELESS
+	icon_state = "sg62"
+	w_class = WEIGHT_CLASS_NORMAL
+	default_ammo = /datum/ammo/bullet/smarttargetrifle
 	max_rounds = 40
+	icon_state_mini = "mag_sg29"
+
+/obj/item/ammo_magazine/rifle/standard_smarttargetrifle/high_pressure
+	name = "\improper SG-62 magazine (10x27mm HV P+)"
+	desc = "A magazine filled with 10x27mm specialized high pressure smart rounds."
+	caliber = CALIBER_10x27_CASELESS
+	icon_state = "sg62_hp"
+	w_class = WEIGHT_CLASS_NORMAL
+	default_ammo = /datum/ammo/bullet/smarttargetrifle/high_pressure
+	max_rounds = 10
+	fire_delay_mod = 1.1 SECONDS
 	icon_state_mini = "mag_sg29"
 
 //-------------------------------------------------------

@@ -43,6 +43,8 @@
 	var/aim_speed_mod = 0
 	///How long ADS takes (time before firing)
 	var/wield_delay_mod = 0
+	/// How much longer the next shot will take.
+	var/fire_delay_mod = 0
 
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -131,6 +133,7 @@
 	master_gun.scatter_unwielded			-= scatter_unwielded_mod
 	master_gun.aim_slowdown					-= aim_speed_mod
 	master_gun.wield_delay					-= wield_delay_mod
+	master_gun.fire_delay					-= fire_delay_mod
 
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)

@@ -1487,6 +1487,7 @@
 			/obj/item/ammo_magazine/packet/smart_minigun = -1,
 			/obj/item/weapon/gun/rifle/standard_smarttargetrifle = -1,
 			/obj/item/ammo_magazine/rifle/standard_smarttargetrifle = -1,
+			/obj/item/ammo_magazine/rifle/standard_smarttargetrifle/high_pressure = -1,
 			/obj/item/ammo_magazine/packet/smart_targetrifle = -1,
 			/obj/item/ammo_magazine/rifle/standard_spottingrifle = -1,
 			/obj/item/ammo_magazine/rifle/standard_spottingrifle/highimpact = -1,

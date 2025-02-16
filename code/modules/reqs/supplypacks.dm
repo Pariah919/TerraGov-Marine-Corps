@@ -830,6 +830,11 @@ SMARTGUN
 	contains = list(/obj/item/ammo_magazine/rifle/standard_smarttargetrifle)
 	cost = 35
 
+/datum/supply_packs/smartguns/smarttarget_rifle_ammo/high_pressure
+	name = "SG-62 smart target high pressure rifle ammo"
+	contains = list(/obj/item/ammo_magazine/rifle/standard_smarttargetrifle/high_pressure)
+	cost = 55
+
 /datum/supply_packs/smartguns/smarttarget_rifle_ammo_bin
 	name = "SG-62 smart target rifle ammo bin"
 	contains = list(/obj/item/ammo_magazine/packet/smart_targetrifle)
